@@ -275,7 +275,7 @@
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            background: conic-gradient(var(--primary) 0deg 360deg, var(--gray-light) 0deg);
+            background: conic-gradient(var(--primary) 0deg 324deg, var(--gray-light) 0deg);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -447,7 +447,7 @@
         /* SERVICES */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin: 60px 0;
         }
@@ -455,24 +455,11 @@
         .service-card {
             background: white;
             border-radius: var(--border-radius);
-            padding: 32px 24px;
+            overflow: hidden;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--gray-light);
             transition: var(--transition);
             position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient);
-            transform: scaleX(0);
-            transition: var(--transition);
         }
 
         .service-card:hover {
@@ -481,20 +468,31 @@
             border-color: transparent;
         }
 
-        .service-card:hover::before {
-            transform: scaleX(1);
+        .service-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-img {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 24px;
         }
 
         .service-icon {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, #dbeafe 0%, #ffffff 100%);
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 24px;
-            font-size: 2rem;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
             color: var(--primary);
             transition: var(--transition);
         }
@@ -502,29 +500,28 @@
         .service-card:hover .service-icon {
             background: var(--gradient);
             color: white;
-            transform: rotateY(180deg);
         }
 
-        .service-card h3 {
+        .service-content h3 {
             font-size: 1.8rem;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
-        .service-card p {
+        .service-content p {
             color: var(--gray);
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .feature-list {
             list-style: none;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .feature-list li {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: var(--gray-dark);
         }
 
@@ -784,6 +781,79 @@
             box-shadow: var(--shadow-xl);
         }
 
+        /* FLOATING ACTION BUTTONS */
+        .floating-buttons {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .floating-btn {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transition: var(--transition);
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .floating-btn.whatsapp {
+            background: #25D366;
+        }
+
+        .floating-btn.phone {
+            background: var(--gradient);
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: var(--gradient);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow-lg);
+            z-index: 100;
+            transition: var(--transition);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            text-decoration: none;
+            border: none;
+        }
+
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
         /* FOOTER */
         footer {
             background: var(--light);
@@ -864,64 +934,6 @@
             border-top: 1px solid var(--gray-light);
         }
 
-        /* FLOATING BUTTONS */
-        .floating-wa {
-            position: fixed;
-            bottom: 25px;
-            left: 25px;
-            background: #25D366;
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2.2rem;
-            box-shadow: 0 8px 20px rgba(37,211,102,0.3);
-            z-index: 100;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-
-        .floating-wa:hover {
-            transform: scale(1.15) rotate(10deg);
-            box-shadow: 0 15px 30px rgba(37,211,102,0.5);
-        }
-
-        .scroll-top {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: var(--gradient);
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8rem;
-            box-shadow: var(--shadow-lg);
-            z-index: 100;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-            opacity: 0;
-            visibility: hidden;
-            text-decoration: none;
-        }
-
-        .scroll-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .scroll-top:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
-
         /* RESPONSIVE */
         @media (max-width: 1024px) {
             .footer-grid {
@@ -962,6 +974,25 @@
 
             .footer-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .floating-buttons {
+                bottom: 15px;
+                left: 15px;
+            }
+
+            .floating-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
+            }
+
+            .scroll-top {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.4rem;
             }
         }
 
@@ -1076,48 +1107,60 @@
         </div>
         <div class="services-grid">
             <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-wrench"></i></div>
-                <h3>تسليك مجاري</h3>
-                <p>أجهزة ضغط عالي 4000 PSI بدون تكسير. نزيل أصعب الدهون والجذور.</p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> إزالة الدهون والجذور</li>
-                    <li><i class="fas fa-check-circle"></i> ضمان 30 يوم</li>
-                    <li><i class="fas fa-check-circle"></i> خدمة فورية</li>
-                </ul>
-                <a href="tel:+966507204088" class="service-link">اطلب الخدمة <i class="fas fa-arrow-left"></i></a>
+                <img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0a39?w=600&auto=format" alt="تسليك مجاري" class="service-img">
+                <div class="service-content">
+                    <div class="service-icon"><i class="fas fa-wrench"></i></div>
+                    <h3>تسليك مجاري</h3>
+                    <p>أجهزة ضغط عالي 4000 PSI بدون تكسير. نزيل أصعب الدهون والجذور.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> إزالة الدهون والجذور</li>
+                        <li><i class="fas fa-check-circle"></i> ضمان 30 يوم</li>
+                        <li><i class="fas fa-check-circle"></i> خدمة فورية</li>
+                    </ul>
+                    <a href="tel:+966507204088" class="service-link">اطلب الخدمة <i class="fas fa-arrow-left"></i></a>
+                </div>
             </div>
             <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-oil-can"></i></div>
-                <h3>شفط بيارات</h3>
-                <p>تقنية الكمبروسر بدون وايتات تقليدية. شفط بقوة 5000 لتر/دقيقة.</p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> شفط بقوة 5000 لتر/دقيقة</li>
-                    <li><i class="fas fa-check-circle"></i> تعقيم كامل</li>
-                    <li><i class="fas fa-check-circle"></i> التخلص الآمن</li>
-                </ul>
-                <a href="tel:+966507204088" class="service-link">اطلب الخدمة <i class="fas fa-arrow-left"></i></a>
+                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&auto=format" alt="شفط بيارات" class="service-img">
+                <div class="service-content">
+                    <div class="service-icon"><i class="fas fa-oil-can"></i></div>
+                    <h3>شفط بيارات</h3>
+                    <p>تقنية الكمبروسر بدون وايتات تقليدية. شفط بقوة 5000 لتر/دقيقة.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> شفط بقوة 5000 لتر/دقيقة</li>
+                        <li><i class="fas fa-check-circle"></i> تعقيم كامل</li>
+                        <li><i class="fas fa-check-circle"></i> التخلص الآمن</li>
+                    </ul>
+                    <a href="tel:+966507204088" class="service-link">اطلب الخدمة <i class="fas fa-arrow-left"></i></a>
+                </div>
             </div>
             <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-water"></i></div>
-                <h3>تنظيف خزانات</h3>
-                <p>مواد معتمدة وشهادة صحية. تنظيف وتعقيم الخزانات الأرضية والعلوية.</p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> إزالة الطحالب</li>
-                    <li><i class="fas fa-check-circle"></i> تعقيم شامل</li>
-                    <li><i class="fas fa-check-circle"></i> خزانات أرضية وعلوية</li>
-                </ul>
-                <a href="tel:+966507204088" class="service-link">اطلب الخدمة <i class="fas fa-arrow-left"></i></a>
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&auto=format" alt="تنظيف خزانات" class="service-img">
+                <div class="service-content">
+                    <div class="service-icon"><i class="fas fa-water"></i></div>
+                    <h3>تنظيف خزانات</h3>
+                    <p>مواد معتمدة وشهادة صحية. تنظيف وتعقيم الخزانات الأرضية والعلوية.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> إزالة الطحالب</li>
+                        <li><i class="fas fa-check-circle"></i> تعقيم شامل</li>
+                        <li><i class="fas fa-check-circle"></i> خزانات أرضية وعلوية</li>
+                    </ul>
+                    <a href="tel:+966507204088" class="service-link">اطلب الخدمة <i class="fas fa-arrow-left"></i></a>
+                </div>
             </div>
             <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-pipe-valve"></i></div>
-                <h3>تركيب سباكة</h3>
-                <p>تركيب شبكات وأدوات صحية بجودة عالية وضمان على التركيب.</p>
-                <ul class="feature-list">
-                    <li><i class="fas fa-check-circle"></i> مواسير صرف صحي</li>
-                    <li><i class="fas fa-check-circle"></i> تركيب خلاطات وكبائن</li>
-                    <li><i class="fas fa-check-circle"></i> ضمان على التركيب</li>
-                </ul>
-                <a href="tel:+966507204088" class="service-link">اطلب الخدمة <i class="fas fa-arrow-left"></i></a>
+                <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&auto=format" alt="تركيب سباكة" class="service-img">
+                <div class="service-content">
+                    <div class="service-icon"><i class="fas fa-pipe-valve"></i></div>
+                    <h3>تركيب سباكة</h3>
+                    <p>تركيب شبكات وأدوات صحية بجودة عالية وضمان على التركيب.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> مواسير صرف صحي</li>
+                        <li><i class="fas fa-check-circle"></i> تركيب خلاطات وكبائن</li>
+                        <li><i class="fas fa-check-circle"></i> ضمان على التركيب</li>
+                    </ul>
+                    <a href="tel:+966507204088" class="service-link">اطلب الخدمة <i class="fas fa-arrow-left"></i></a>
+                </div>
             </div>
         </div>
     </section>
@@ -1287,8 +1330,13 @@
         </div>
     </footer>
 
-    <!-- FLOATING BUTTONS -->
-    <a href="https://wa.me/966507204088" target="_blank" class="floating-wa"><i class="fab fa-whatsapp"></i></a>
+    <!-- FLOATING ACTION BUTTONS -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/966507204088" target="_blank" class="floating-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="tel:+966507204088" class="floating-btn phone"><i class="fas fa-phone-alt"></i></a>
+    </div>
+
+    <!-- SCROLL TO TOP BUTTON -->
     <a href="#" class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></a>
 
     <script>
