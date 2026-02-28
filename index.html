@@ -491,6 +491,16 @@
                 padding: 8px 16px;
             }
         }
+        /* Reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -547,45 +557,49 @@
         <p class="section-subtitle">نقدم حلولاً متكاملة لمشاكل الصرف الصحي باستخدام أحدث تقنيات الكمبروسر.</p>
         <div class="services-grid">
             <!-- 1. تسليك مجاري -->
-            <div class="service-card" id="service-drain">
+            <div class="service-card reveal" id="service-drain">
                 <div class="service-icon"><i class="fas fa-wrench"></i></div>
                 <h3>تسليك مجاري</h3>
                 <p>أجهزة ضغط عالي 4000 PSI بدون تكسير.</p>
                 <ul class="feature-list">
                     <li><i class="fas fa-check-circle"></i> إزالة الدهون والجذور</li>
                     <li><i class="fas fa-check-circle"></i> ضمان 30 يوم</li>
+                    <li><i class="fas fa-check-circle"></i> خدمة فورية</li>
                 </ul>
                 <a href="tel:+966507204088" class="service-link">اطلب الخدمة <i class="fas fa-arrow-left"></i></a>
             </div>
             <!-- 2. شفط بيارات -->
-            <div class="service-card" id="service-septic">
+            <div class="service-card reveal" id="service-septic">
                 <div class="service-icon"><i class="fas fa-oil-can"></i></div>
                 <h3>شفط بيارات</h3>
                 <p>تقنية الكمبروسر بدون وايتات تقليدية.</p>
                 <ul class="feature-list">
                     <li><i class="fas fa-check-circle"></i> شفط بقوة 5000 لتر/دقيقة</li>
                     <li><i class="fas fa-check-circle"></i> تعقيم كامل</li>
+                    <li><i class="fas fa-check-circle"></i> التخلص الآمن</li>
                 </ul>
                 <a href="tel:+966507204088" class="service-link">اطلب الخدمة <i class="fas fa-arrow-left"></i></a>
             </div>
             <!-- 3. تنظيف خزانات -->
-            <div class="service-card" id="service-tank">
+            <div class="service-card reveal" id="service-tank">
                 <div class="service-icon"><i class="fas fa-water"></i></div>
                 <h3>تنظيف خزانات</h3>
                 <p>مواد معتمدة وشهادة صحية.</p>
                 <ul class="feature-list">
                     <li><i class="fas fa-check-circle"></i> إزالة الطحالب</li>
                     <li><i class="fas fa-check-circle"></i> تعقيم شامل</li>
+                    <li><i class="fas fa-check-circle"></i> خزانات أرضية وعلوية</li>
                 </ul>
                 <a href="tel:+966507204088" class="service-link">اطلب الخدمة <i class="fas fa-arrow-left"></i></a>
             </div>
             <!-- 4. تركيب سباكة -->
-            <div class="service-card" id="service-plumbing">
+            <div class="service-card reveal" id="service-plumbing">
                 <div class="service-icon"><i class="fas fa-pipe-valve"></i></div>
                 <h3>تركيب سباكة</h3>
                 <p>تركيب شبكات وأدوات صحية.</p>
                 <ul class="feature-list">
                     <li><i class="fas fa-check-circle"></i> مواسير صرف صحي</li>
+                    <li><i class="fas fa-check-circle"></i> تركيب خلاطات وكبائن</li>
                     <li><i class="fas fa-check-circle"></i> ضمان على التركيب</li>
                 </ul>
                 <a href="tel:+966507204088" class="service-link">اطلب الخدمة <i class="fas fa-arrow-left"></i></a>
@@ -608,16 +622,18 @@
         <h2 class="section-title">لماذا الكمبروسر هو الأفضل؟</h2>
         <p class="section-subtitle">مميزات تجعلنا الخيار الأول في الرياض</p>
         <div class="features-grid">
-            <div class="feature"><i class="fas fa-bolt"></i><h3>استجابة فورية</h3><p>نصل إليك خلال 30-60 دقيقة</p></div>
-            <div class="feature"><i class="fas fa-shield-alt"></i><h3>ضمان 30 يوم</h3><p>على جميع الخدمات</p></div>
-            <div class="feature"><i class="fas fa-cogs"></i><h3>أحدث الأجهزة</h3><p>كمبروسر ألماني 4000 PSI</p></div>
-            <div class="feature"><i class="fas fa-broom"></i><h3>بدون تكسير</h3><p>تقنية الضغط العالي</p></div>
+            <div class="feature reveal"><i class="fas fa-bolt"></i><h3>استجابة فورية</h3><p>نصل إليك خلال 30-60 دقيقة في أي مكان بالرياض.</p></div>
+            <div class="feature reveal"><i class="fas fa-shield-alt"></i><h3>ضمان 30 يوم</h3><p>نضمن لك الخدمة أو نعيدها مجاناً.</p></div>
+            <div class="feature reveal"><i class="fas fa-cogs"></i><h3>أحدث الأجهزة</h3><p>كمبروسر ألماني بقوة 4000 PSI.</p></div>
+            <div class="feature reveal"><i class="fas fa-broom"></i><h3>بدون تكسير</h3><p>تقنية الضغط العالي تحافظ على البنية التحتية.</p></div>
+            <div class="feature reveal"><i class="fas fa-certificate"></i><h3>معتمدون</h3><p>مرخصون ومعتمدون من غرفة الرياض.</p></div>
+            <div class="feature reveal"><i class="fas fa-hand-holding-heart"></i><h3>خدمة 24 ساعة</h3><p>طوال أيام الأسبوع بما في ذلك العطلات.</p></div>
         </div>
     </section>
 
     <!-- Areas -->
     <div class="container">
-        <h2 class="section-title" style="margin-top: 40px;">نغطي جميع أحياء الرياض</h2>
+        <h2 class="section-title">نغطي جميع أحياء الرياض</h2>
         <div class="areas-grid">
             <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي الملقا</span>
             <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي الياسمين</span>
@@ -627,6 +643,16 @@
             <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي قرطبة</span>
             <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي النسيم</span>
             <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي العليا</span>
+            <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي لبن</span>
+            <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي عرقة</span>
+            <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي الشفا</span>
+            <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي النهضة</span>
+            <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي المونسية</span>
+            <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي القدس</span>
+            <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي الروضة</span>
+            <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي السويدي</span>
+            <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي الشهداء</span>
+            <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي طويق</span>
         </div>
     </div>
 
@@ -635,28 +661,36 @@
         <h2 class="section-title">ماذا قال عملاؤنا؟</h2>
         <p class="section-subtitle">تجارب حقيقية لأناس وثقوا بنا</p>
         <div class="testimonials-grid">
-            <div class="testimonial-card">
+            <div class="testimonial-card reveal">
                 <i class="fas fa-quote-right"></i>
-                <p>"ما قصروا والله، فكوا لي سدة المطبخ في أقل من ساعة."</p>
+                <p>"ما قصروا والله، فكوا لي سدة المطبخ في أقل من ساعة. شغل نظيف وسريع."</p>
                 <div class="author">
                     <div class="author-img">أ.س</div>
                     <div><strong>أبو سليمان</strong><br>حي الصحافة</div>
                 </div>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card reveal">
                 <i class="fas fa-quote-right"></i>
-                <p>"شفطوا لي البيارة بسرعة وأسعارهم مناسبة، أنصح فيهم."</p>
+                <p>"شفطوا لي البيارة بسرعة وأسعارهم مناسبة، أنصح فيهم وبقوة."</p>
                 <div class="author">
                     <div class="author-img">خ.ع</div>
                     <div><strong>خالد العتيبي</strong><br>حي الرمال</div>
                 </div>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card reveal">
                 <i class="fas fa-quote-right"></i>
-                <p>"نظفوا لي الخزان الأرضي وجددوه، صار زي الجديد."</p>
+                <p>"نظفوا لي الخزان الأرضي وجددوه، صار زي الجديد. شكراً لكم."</p>
                 <div class="author">
                     <div class="author-img">أ.م</div>
                     <div><strong>أم محمد</strong><br>حي الياسمين</div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal">
+                <i class="fas fa-quote-right"></i>
+                <p>"تعاملت معهم أكثر من مرة، التزام بالمواعيد وجودة ممتازة."</p>
+                <div class="author">
+                    <div class="author-img">ن.ع</div>
+                    <div><strong>نواف العتيبي</strong><br>حي الملقا</div>
                 </div>
             </div>
         </div>
@@ -686,6 +720,7 @@
                         <li><a href="#home">الرئيسية</a></li>
                         <li><a href="#services">الخدمات</a></li>
                         <li><a href="#features">المميزات</a></li>
+                        <li><a href="#testimonials">آراء العملاء</a></li>
                         <li><a href="#contact">اتصل بنا</a></li>
                     </ul>
                 </div>
@@ -708,12 +743,36 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>© 2026 الكمبروسر – جميع الحقوق محفوظة. تصميم مودرن بسيط.</p>
+                <p>© <span id="current-year"></span> الكمبروسر – جميع الحقوق محفوظة. تصميم مودرن بسيط.</p>
             </div>
         </div>
     </footer>
 
     <!-- Floating WhatsApp -->
     <a href="https://wa.me/966507204088" target="_blank" class="floating-wa"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+        // 1. تعيين السنة الحالية في الفوتر
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // 2. تأثير الظهور عند التمرير (reveal)
+        const reveals = document.querySelectorAll('.reveal');
+        function checkReveal() {
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 80) {
+                    el.classList.add('active');
+                } else {
+                    // يمكن إزالة الكلاس إذا أردنا إعادة الإخفاء عند التمرير لأعلى، لكن الأفضل إبقائها
+                    // el.classList.remove('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', checkReveal); // تشغيل عند التحميل
+
+        // 3. إضافة سلاسة للنقر على روابط الأقسام (موجودة بالفعل في CSS)
+    </script>
 </body>
 </html>
