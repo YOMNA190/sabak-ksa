@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الكمبروسر™ | خدمات الصرف الصحي المتطورة</title>
-    <meta name="description" content="الكمبروسر: حلول متكاملة لتسليك المجاري، شفط البيارات، تنظيف الخزانات وتركيب السباكة بالرياض. تقنيات ألمانية بدون تكسير.">
+    <title>الكمبروسر | خدمات الصرف الصحي المتطورة</title>
+    <meta name="description" content="الكمبروسر: تسليك مجاري، شفط بيارات، تنظيف خزانات، تركيب سباكة بالرياض. تقنيات حديثة بدون تكسير.">
+    <meta name="keywords" content="تسليك مجاري بالرياض, شفط بيارات, تنظيف خزانات, تركيب سباكة, الكمبروسر">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         * {
@@ -16,496 +17,464 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Cairo', sans-serif;
-            background: linear-gradient(145deg, #0B1926 0%, #1D3B4E 100%);
-            color: #fff;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
             line-height: 1.6;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
+            scroll-behavior: smooth;
         }
         .container {
-            max-width: 1300px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 30px;
+            padding: 0 24px;
         }
-        /* الأشكال المتحركة في الخلفية */
-        .shape {
+        /* Header */
+        header {
             position: fixed;
-            top: -150px;
-            right: -150px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0,212,255,0.2) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: -1;
-            animation: moveShape 25s infinite alternate;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #e2e8f0;
+            z-index: 50;
+            padding: 16px 0;
         }
-        .shape2 {
-            bottom: -100px;
-            left: -100px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(100,255,180,0.15) 0%, transparent 70%);
-            animation: moveShape2 30s infinite alternate;
-        }
-        @keyframes moveShape {
-            0% { transform: translate(0,0) scale(1); }
-            100% { transform: translate(-200px, 100px) scale(1.2); }
-        }
-        @keyframes moveShape2 {
-            0% { transform: translate(0,0) rotate(0deg); }
-            100% { transform: translate(200px, -150px) rotate(20deg); }
-        }
-        /* الهيدر */
-        .header {
+        header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 40px;
         }
         .logo {
-            font-size: 2.2rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #4DFFD0, #29B6F6);
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -1px;
         }
-        .cta-header {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 700;
-            transition: 0.3s;
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            font-weight: 500;
         }
-        .cta-header:hover {
-            background: #00C3A5;
-            border-color: #00C3A5;
+        .nav-links a {
+            text-decoration: none;
+            color: #334155;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+        .header-cta {
+            background: #2563eb;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .header-cta:hover {
+            background: #1d4ed8;
             transform: scale(1.05);
         }
-        /* القسم الرئيسي (Hero) */
+        /* Hero section */
         .hero {
+            padding: 160px 0 80px;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+        }
+        .hero .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 60px;
             align-items: center;
-            padding: 40px 0 80px;
         }
-        .hero-title {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
             line-height: 1.2;
-            margin-bottom: 20px;
-            position: relative;
+            margin-bottom: 24px;
+            color: #0f172a;
         }
-        .hero-title span {
-            background: linear-gradient(135deg, #4DFFD0, #29B6F6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .hero h1 span {
+            color: #2563eb;
+            position: relative;
             display: inline-block;
         }
-        .hero-desc {
+        .hero p {
             font-size: 1.2rem;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 30px;
+            color: #475569;
+            margin-bottom: 32px;
         }
         .hero-stats {
             display: flex;
-            gap: 30px;
+            gap: 32px;
             margin-bottom: 40px;
         }
-        .stat-item {
+        .stat {
             text-align: center;
         }
-        .stat-number {
-            font-size: 2.2rem;
+        .stat .number {
+            font-size: 2rem;
             font-weight: 800;
-            color: #4DFFD0;
+            color: #2563eb;
             line-height: 1;
         }
-        .stat-label {
+        .stat .label {
+            color: #64748b;
             font-size: 0.9rem;
-            opacity: 0.7;
         }
         .btn-group {
             display: flex;
-            gap: 20px;
+            gap: 16px;
             flex-wrap: wrap;
         }
         .btn-primary {
-            background: linear-gradient(135deg, #4DFFD0, #29B6F6);
-            color: #0B1926;
-            font-weight: 800;
-            padding: 16px 40px;
-            border-radius: 60px;
-            box-shadow: 0 15px 25px -5px rgba(0,212,255,0.3);
-            transition: 0.3s;
+            background: #2563eb;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.2s;
             display: inline-flex;
             align-items: center;
             gap: 8px;
         }
         .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 30px -5px #00C3A5;
+            background: #1d4ed8;
+            transform: translateY(-3px);
         }
         .btn-outline {
-            border: 2px solid rgba(255,255,255,0.3);
-            padding: 14px 35px;
-            border-radius: 60px;
+            background: transparent;
+            border: 2px solid #e2e8f0;
+            color: #334155;
+            padding: 12px 30px;
+            border-radius: 40px;
+            text-decoration: none;
             font-weight: 600;
-            transition: 0.3s;
+            transition: border-color 0.2s, color 0.2s;
             display: inline-flex;
             align-items: center;
             gap: 8px;
         }
         .btn-outline:hover {
-            border-color: #4DFFD0;
-            background: rgba(77,255,208,0.1);
+            border-color: #2563eb;
+            color: #2563eb;
         }
         .hero-image {
-            position: relative;
+            background: #f1f5f9;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
         }
         .hero-image img {
             width: 100%;
-            max-width: 500px;
-            border-radius: 40px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-            transform: rotate(3deg);
-            transition: 0.5s;
+            height: auto;
+            display: block;
         }
-        .hero-image img:hover {
-            transform: rotate(0deg) scale(1.02);
-        }
-        .floating-card {
-            position: absolute;
-            bottom: -20px;
-            left: -20px;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 15px 25px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-        }
-        /* شريط الخدمات السريعة */
-        .quick-services {
+        /* Trust badges */
+        .trust-badges {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            margin: 60px 0 30px;
+            gap: 16px;
+            margin: 60px 0 20px;
         }
-        .quick-item {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 10px 25px;
-            border-radius: 60px;
+        .badge {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 40px;
+            padding: 8px 20px;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
-            gap: 10px;
-            transition: 0.3s;
-            font-weight: 500;
+            gap: 8px;
+            color: #334155;
         }
-        .quick-item:hover {
-            background: #4DFFD0;
-            color: #0B1926;
-            transform: scale(1.05);
+        .badge i {
+            color: #2563eb;
         }
-        .quick-item i {
-            font-size: 1.3rem;
-        }
-        /* قسم الخدمات - تصميم بطاقات دائري */
+        /* Services section */
         .section-title {
             text-align: center;
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            margin: 80px 0 50px;
-            position: relative;
+            margin-bottom: 16px;
+            color: #0f172a;
         }
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, #4DFFD0, #29B6F6);
-            margin: 20px auto 0;
-            border-radius: 2px;
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto 60px;
+            font-size: 1.2rem;
         }
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin: 50px 0;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
         }
         .service-card {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 40px;
-            padding: 30px 20px;
-            text-align: center;
-            transition: 0.5s;
-            position: relative;
-            overflow: hidden;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            padding: 32px 24px;
+            transition: box-shadow 0.3s, transform 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
         }
         .service-card:hover {
-            transform: translateY(-20px) scale(1.02);
-            border-color: #4DFFD0;
-            box-shadow: 0 20px 40px rgba(0,212,255,0.2);
-        }
-        .service-card:before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(77,255,208,0.1), transparent 70%);
-            opacity: 0;
-            transition: 0.5s;
-        }
-        .service-card:hover:before {
-            opacity: 1;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            border-color: #2563eb;
         }
         .service-icon {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #4DFFD0, #29B6F6);
-            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            background: #dbeafe;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 25px;
-            font-size: 3rem;
-            color: #0B1926;
-            transition: 0.5s;
-        }
-        .service-card:hover .service-icon {
-            transform: rotate(360deg);
-        }
-        .service-title {
+            margin-bottom: 24px;
             font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 15px;
+            color: #2563eb;
         }
-        .service-desc {
-            color: rgba(255,255,255,0.7);
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .service-card p {
+            color: #475569;
             margin-bottom: 20px;
         }
-        .service-features {
+        .feature-list {
             list-style: none;
-            text-align: right;
-            margin: 20px 0;
+            margin-bottom: 24px;
         }
-        .service-features li {
-            margin: 10px 0;
+        .feature-list li {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            margin-bottom: 8px;
+            color: #475569;
         }
-        .service-features i {
-            color: #4DFFD0;
+        .feature-list i {
+            color: #2563eb;
+            font-size: 1rem;
         }
         .service-link {
-            display: inline-block;
-            margin-top: 15px;
-            color: #4DFFD0;
+            color: #2563eb;
             font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        /* قسم الإحصائيات بالعدادات */
-        .stats-section {
-            background: rgba(0,0,0,0.2);
-            backdrop-filter: blur(8px);
-            border-radius: 80px;
-            padding: 60px 40px;
-            margin: 80px 0;
+        .service-link:hover {
+            gap: 12px;
         }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+        /* Stats section */
+        .stats-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background: #f8fafc;
+            border-radius: 40px;
+            padding: 40px 20px;
+            margin: 60px 0;
+        }
+        .stat-item {
             text-align: center;
+            flex: 1 1 200px;
+            margin: 10px;
         }
-        .stat-box {
-            padding: 20px;
-        }
-        .stat-box .number {
-            font-size: 3.5rem;
+        .stat-item .number {
+            font-size: 3rem;
             font-weight: 800;
-            color: #4DFFD0;
-            line-height: 1;
+            color: #2563eb;
         }
-        .stat-box .label {
-            font-size: 1.2rem;
-            opacity: 0.8;
+        .stat-item .label {
+            color: #475569;
         }
-        /* قسم المميزات */
+        /* Features section */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
-            margin: 50px 0;
+            margin: 60px 0;
         }
         .feature {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 40px;
-            padding: 40px 30px;
-            transition: 0.4s;
-        }
-        .feature:hover {
-            background: rgba(77,255,208,0.1);
-            border-color: #4DFFD0;
+            text-align: center;
+            padding: 30px 20px;
         }
         .feature i {
             font-size: 2.5rem;
-            color: #4DFFD0;
+            color: #2563eb;
             margin-bottom: 20px;
         }
         .feature h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
         }
-        /* قسم المناطق (شكل مختلف) */
-        .areas {
+        .feature p {
+            color: #475569;
+        }
+        /* Areas */
+        .areas-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             margin: 40px 0;
         }
         .area-tag {
-            background: rgba(255,255,255,0.05);
-            padding: 8px 25px;
-            border-radius: 60px;
-            border: 1px solid rgba(255,255,255,0.1);
-            font-size: 1.1rem;
+            background: #f1f5f9;
+            border-radius: 40px;
+            padding: 8px 20px;
+            font-size: 1rem;
+            color: #334155;
         }
         .area-tag i {
-            color: #4DFFD0;
+            color: #2563eb;
             margin-left: 5px;
         }
-        /* قسم آراء العملاء (كروت مقلوبة) */
+        /* Testimonials */
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin: 50px 0;
+            margin: 60px 0;
         }
         .testimonial-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 40px 0 40px 0;
+            background: #f8fafc;
+            border-radius: 24px;
             padding: 30px;
-            transition: 0.4s;
-        }
-        .testimonial-card:hover {
-            border-radius: 0 40px 0 40px;
-            border-color: #4DFFD0;
+            border: 1px solid #e2e8f0;
         }
         .testimonial-card i {
-            color: #4DFFD0;
+            color: #2563eb;
             font-size: 2rem;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
         }
         .testimonial-card p {
-            font-size: 1.1rem;
             margin-bottom: 20px;
-            opacity: 0.9;
+            color: #334155;
         }
         .author {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
         .author-img {
-            width: 50px;
-            height: 50px;
-            background: #4DFFD0;
+            width: 48px;
+            height: 48px;
+            background: #2563eb;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #0B1926;
-            font-weight: 800;
+            color: white;
+            font-weight: 700;
         }
-        /* CTA النهائي */
-        .cta-section {
-            background: linear-gradient(145deg, #4DFFD0, #29B6F6);
-            border-radius: 80px;
-            padding: 80px 40px;
+        /* CTA */
+        .cta {
+            background: #2563eb;
+            border-radius: 40px;
+            padding: 60px 40px;
             text-align: center;
+            color: white;
             margin: 80px 0;
-            color: #0B1926;
         }
-        .cta-section h2 {
-            font-size: 3.5rem;
+        .cta h2 {
+            font-size: 3rem;
             font-weight: 800;
             margin-bottom: 20px;
         }
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
         .cta-phone {
-            font-size: 3rem;
-            font-weight: 900;
-            color: #0B1926;
-            background: rgba(255,255,255,0.3);
-            backdrop-filter: blur(5px);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            background: rgba(255,255,255,0.2);
             padding: 15px 50px;
-            border-radius: 80px;
+            border-radius: 60px;
             display: inline-block;
-            margin: 30px 0;
-            transition: 0.3s;
+            transition: background 0.2s;
         }
         .cta-phone:hover {
-            background: white;
-            transform: scale(1.05);
+            background: rgba(255,255,255,0.3);
         }
-        /* الفوتر */
-        .footer {
-            background: rgba(0,0,0,0.3);
-            backdrop-filter: blur(8px);
-            border-top: 1px solid rgba(255,255,255,0.1);
+        /* Footer */
+        footer {
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
             padding: 60px 0 30px;
-            margin-top: 60px;
         }
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
+            margin-bottom: 40px;
         }
-        .footer-links a {
-            display: block;
-            margin: 10px 0;
-            opacity: 0.7;
-            transition: 0.3s;
+        .footer-col h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
         }
-        .footer-links a:hover {
-            opacity: 1;
-            color: #4DFFD0;
-            transform: translateX(-5px);
+        .footer-col ul {
+            list-style: none;
         }
-        .footer-bottom {
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+        .footer-col a {
+            color: #475569;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover {
+            color: #2563eb;
+        }
+        .copyright {
             text-align: center;
+            color: #64748b;
             padding-top: 30px;
-            margin-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            opacity: 0.6;
+            border-top: 1px solid #e2e8f0;
         }
-        /* متجاوب */
+        /* Floating WhatsApp */
+        .floating-wa {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: transform 0.2s;
+        }
+        .floating-wa:hover {
+            transform: scale(1.1);
+        }
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero {
+            .hero .container {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
@@ -515,133 +484,141 @@
             .btn-group {
                 justify-content: center;
             }
-            .floating-card {
+            .nav-links {
                 display: none;
             }
-            .section-title {
-                font-size: 2.2rem;
+            .header-cta {
+                padding: 8px 16px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="shape"></div>
-    <div class="shape2"></div>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="#home" class="logo">الكمبروسر</a>
+            <nav class="nav-links">
+                <a href="#home">الرئيسية</a>
+                <a href="#services">الخدمات</a>
+                <a href="#features">مميزاتنا</a>
+                <a href="#testimonials">آراء العملاء</a>
+                <a href="#contact">اتصل بنا</a>
+            </nav>
+            <a href="tel:+966507204088" class="header-cta"><i class="fas fa-phone-alt"></i> 0507204088</a>
+        </div>
+    </header>
 
-    <div class="container">
-        <!-- الهيدر -->
-        <header class="header">
-            <div class="logo">الكمبروسر™</div>
-            <a href="tel:+966507204088" class="cta-header"><i class="fas fa-phone-alt"></i> 0507204088</a>
-        </header>
-
-        <!-- الهيرو -->
-        <section class="hero">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
             <div>
-                <h1 class="hero-title">خبيرك الأول <span>في الصرف الصحي</span> بالرياض</h1>
-                <p class="hero-desc">تسليك مجاري • شفط بيارات • تنظيف خزانات • تركيب سباكة • بأحدث تقنيات الكمبروسر الألمانية</p>
+                <h1>خدمات الصرف الصحي <span>بالكمبروسر</span> في الرياض</h1>
+                <p>تسليك مجاري • شفط بيارات • تنظيف خزانات • تركيب سباكة • بأحدث التقنيات وضمان 30 يوم.</p>
                 <div class="hero-stats">
-                    <div class="stat-item"><span class="stat-number">15+</span><div class="stat-label">سنة خبرة</div></div>
-                    <div class="stat-item"><span class="stat-number">5000+</span><div class="stat-label">عميل</div></div>
-                    <div class="stat-item"><span class="stat-number">98%</span><div class="stat-label">رضا</div></div>
+                    <div class="stat"><span class="number">15+</span> <div class="label">سنة خبرة</div></div>
+                    <div class="stat"><span class="number">5000+</span> <div class="label">عميل</div></div>
+                    <div class="stat"><span class="number">98%</span> <div class="label">رضا العملاء</div></div>
                 </div>
                 <div class="btn-group">
                     <a href="tel:+966507204088" class="btn-primary"><i class="fas fa-bolt"></i> طلب فوري</a>
-                    <a href="#services" class="btn-outline"><i class="fas fa-info-circle"></i> الخدمات</a>
+                    <a href="#services" class="btn-outline"><i class="fas fa-arrow-down"></i> استعرض الخدمات</a>
                 </div>
             </div>
             <div class="hero-image">
                 <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&auto=format" alt="خدمات الكمبروسر">
-                <div class="floating-card"><i class="fas fa-shield-alt"></i> ضمان 30 يوم</div>
             </div>
-        </section>
-
-        <!-- روابط سريعة للخدمات -->
-        <div class="quick-services">
-            <a href="#service-drain" class="quick-item"><i class="fas fa-wrench"></i> تسليك مجاري</a>
-            <a href="#service-septic" class="quick-item"><i class="fas fa-oil-can"></i> شفط بيارات</a>
-            <a href="#service-tank" class="quick-item"><i class="fas fa-water"></i> تنظيف خزانات</a>
-            <a href="#service-plumbing" class="quick-item"><i class="fas fa-pipe-valve"></i> تركيب سباكة</a>
-            <a href="#contact" class="quick-item"><i class="fas fa-exclamation-triangle"></i> طوارئ 24h</a>
         </div>
+    </section>
 
-        <!-- قسم الخدمات المتخصصة -->
-        <h2 id="services" class="section-title">خدماتنا المبتكرة</h2>
+    <!-- Trust Badges -->
+    <div class="container">
+        <div class="trust-badges">
+            <span class="badge"><i class="fas fa-certificate"></i> معتمد من غرفة الرياض</span>
+            <span class="badge"><i class="fas fa-shield-alt"></i> مؤمن بالكامل</span>
+            <span class="badge"><i class="fas fa-award"></i> ضمان 30 يوم</span>
+            <span class="badge"><i class="fas fa-clock"></i> خدمة 24 ساعة</span>
+        </div>
+    </div>
+
+    <!-- Services -->
+    <section id="services" class="container">
+        <h2 class="section-title">خدماتنا المتخصصة</h2>
+        <p class="section-subtitle">نقدم حلولاً متكاملة لمشاكل الصرف الصحي باستخدام أحدث تقنيات الكمبروسر.</p>
         <div class="services-grid">
-            <!-- خدمة 1: تسليك -->
+            <!-- 1. تسليك مجاري -->
             <div class="service-card" id="service-drain">
                 <div class="service-icon"><i class="fas fa-wrench"></i></div>
-                <h3 class="service-title">تسليك مجاري</h3>
-                <p class="service-desc">بأجهزة ضغط 4000 PSI بدون تكسير</p>
-                <ul class="service-features">
+                <h3>تسليك مجاري</h3>
+                <p>أجهزة ضغط عالي 4000 PSI بدون تكسير.</p>
+                <ul class="feature-list">
                     <li><i class="fas fa-check-circle"></i> إزالة الدهون والجذور</li>
                     <li><i class="fas fa-check-circle"></i> ضمان 30 يوم</li>
-                    <li><i class="fas fa-check-circle"></i> خدمة فورية</li>
                 </ul>
                 <a href="tel:+966507204088" class="service-link">اطلب الخدمة <i class="fas fa-arrow-left"></i></a>
             </div>
-            <!-- خدمة 2: شفط بيارات -->
+            <!-- 2. شفط بيارات -->
             <div class="service-card" id="service-septic">
                 <div class="service-icon"><i class="fas fa-oil-can"></i></div>
-                <h3 class="service-title">شفط بيارات</h3>
-                <p class="service-desc">بتقنية الكمبروسر بدون وايتات</p>
-                <ul class="service-features">
-                    <li><i class="fas fa-check-circle"></i> شفط بقوة 5000 لتر/د</li>
+                <h3>شفط بيارات</h3>
+                <p>تقنية الكمبروسر بدون وايتات تقليدية.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> شفط بقوة 5000 لتر/دقيقة</li>
                     <li><i class="fas fa-check-circle"></i> تعقيم كامل</li>
-                    <li><i class="fas fa-check-circle"></i> التخلص الآمن</li>
                 </ul>
                 <a href="tel:+966507204088" class="service-link">اطلب الخدمة <i class="fas fa-arrow-left"></i></a>
             </div>
-            <!-- خدمة 3: تنظيف خزانات -->
+            <!-- 3. تنظيف خزانات -->
             <div class="service-card" id="service-tank">
                 <div class="service-icon"><i class="fas fa-water"></i></div>
-                <h3 class="service-title">تنظيف خزانات</h3>
-                <p class="service-desc">مواد معتمدة وشهادة صحية</p>
-                <ul class="service-features">
+                <h3>تنظيف خزانات</h3>
+                <p>مواد معتمدة وشهادة صحية.</p>
+                <ul class="feature-list">
                     <li><i class="fas fa-check-circle"></i> إزالة الطحالب</li>
                     <li><i class="fas fa-check-circle"></i> تعقيم شامل</li>
-                    <li><i class="fas fa-check-circle"></i> خزانات أرضية وعلوية</li>
                 </ul>
                 <a href="tel:+966507204088" class="service-link">اطلب الخدمة <i class="fas fa-arrow-left"></i></a>
             </div>
-            <!-- خدمة 4: تركيب سباكة -->
+            <!-- 4. تركيب سباكة -->
             <div class="service-card" id="service-plumbing">
                 <div class="service-icon"><i class="fas fa-pipe-valve"></i></div>
-                <h3 class="service-title">تركيب سباكة</h3>
-                <p class="service-desc">تركيب شبكات وأدوات صحية</p>
-                <ul class="service-features">
+                <h3>تركيب سباكة</h3>
+                <p>تركيب شبكات وأدوات صحية.</p>
+                <ul class="feature-list">
                     <li><i class="fas fa-check-circle"></i> مواسير صرف صحي</li>
-                    <li><i class="fas fa-check-circle"></i> خلاطات وكبائن</li>
                     <li><i class="fas fa-check-circle"></i> ضمان على التركيب</li>
                 </ul>
                 <a href="tel:+966507204088" class="service-link">اطلب الخدمة <i class="fas fa-arrow-left"></i></a>
             </div>
         </div>
+    </section>
 
-        <!-- إحصائيات متحركة -->
-        <div class="stats-section">
-            <div class="stats-grid">
-                <div class="stat-box"><div class="number">15+</div><div class="label">سنة خبرة</div></div>
-                <div class="stat-box"><div class="number">5000+</div><div class="label">عميل</div></div>
-                <div class="stat-box"><div class="number">98%</div><div class="label">رضا العملاء</div></div>
-                <div class="stat-box"><div class="number">30'</div><div class="label">متوسط الوصول</div></div>
-            </div>
+    <!-- Stats Row -->
+    <div class="container">
+        <div class="stats-row">
+            <div class="stat-item"><div class="number">15+</div><div class="label">سنوات خبرة</div></div>
+            <div class="stat-item"><div class="number">5000+</div><div class="label">عميل سعيد</div></div>
+            <div class="stat-item"><div class="number">98%</div><div class="label">تقييم إيجابي</div></div>
+            <div class="stat-item"><div class="number">30'</div><div class="label">متوسط الوصول</div></div>
         </div>
+    </div>
 
-        <!-- لماذا نحن؟ (مميزات) -->
-        <h2 class="section-title">ليه الكمبروسر هو الأفضل؟</h2>
+    <!-- Features -->
+    <section id="features" class="container">
+        <h2 class="section-title">لماذا الكمبروسر هو الأفضل؟</h2>
+        <p class="section-subtitle">مميزات تجعلنا الخيار الأول في الرياض</p>
         <div class="features-grid">
-            <div class="feature"><i class="fas fa-clock"></i><h3>استجابة فورية</h3><p>نوصلك خلال 30-60 دقيقة أينما كنت بالرياض.</p></div>
-            <div class="feature"><i class="fas fa-shield-alt"></i><h3>ضمان 30 يوم</h3><p>نضمن لك الخدمة أو نعيدها لك مجاناً.</p></div>
-            <div class="feature"><i class="fas fa-cogs"></i><h3>أحدث الأجهزة</h3><p>كمبروسر ألماني بقوة 4000 PSI.</p></div>
-            <div class="feature"><i class="fas fa-broom"></i><h3>بدون تكسير</h3><p>تقنية الضغط العالي تحافظ على البنية التحتية.</p></div>
-            <div class="feature"><i class="fas fa-certificate"></i><h3>معتمدون</h3><p>مرخصون ومعتمدون من غرفة الرياض.</p></div>
-            <div class="feature"><i class="fas fa-hand-holding-heart"></i><h3>خدمة 24 ساعة</h3><p>طوال أيام الأسبوع بما في ذلك العطلات.</p></div>
+            <div class="feature"><i class="fas fa-bolt"></i><h3>استجابة فورية</h3><p>نصل إليك خلال 30-60 دقيقة</p></div>
+            <div class="feature"><i class="fas fa-shield-alt"></i><h3>ضمان 30 يوم</h3><p>على جميع الخدمات</p></div>
+            <div class="feature"><i class="fas fa-cogs"></i><h3>أحدث الأجهزة</h3><p>كمبروسر ألماني 4000 PSI</p></div>
+            <div class="feature"><i class="fas fa-broom"></i><h3>بدون تكسير</h3><p>تقنية الضغط العالي</p></div>
         </div>
+    </section>
 
-        <!-- المناطق التي نغطيها -->
-        <h2 class="section-title">نغطي كل أحياء الرياض</h2>
-        <div class="areas">
+    <!-- Areas -->
+    <div class="container">
+        <h2 class="section-title" style="margin-top: 40px;">نغطي جميع أحياء الرياض</h2>
+        <div class="areas-grid">
             <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي الملقا</span>
             <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي الياسمين</span>
             <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي الصحافة</span>
@@ -650,73 +627,93 @@
             <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي قرطبة</span>
             <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي النسيم</span>
             <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي العليا</span>
-            <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي لبن</span>
-            <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي عرقة</span>
-            <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي الشفا</span>
-            <span class="area-tag"><i class="fas fa-map-marker-alt"></i> حي النهضة</span>
         </div>
+    </div>
 
-        <!-- آراء العملاء -->
-        <h2 class="section-title">ماذا قالوا عنا؟</h2>
+    <!-- Testimonials -->
+    <section id="testimonials" class="container">
+        <h2 class="section-title">ماذا قال عملاؤنا؟</h2>
+        <p class="section-subtitle">تجارب حقيقية لأناس وثقوا بنا</p>
         <div class="testimonials-grid">
             <div class="testimonial-card">
                 <i class="fas fa-quote-right"></i>
-                <p>"ما قصروا والله، فكوا لي سدة المطبخ في أقل من ساعة. شغل نظيف وسريع."</p>
-                <div class="author"><div class="author-img">أ.س</div> <div><strong>أبو سليمان</strong><br>حي الصحافة</div></div>
+                <p>"ما قصروا والله، فكوا لي سدة المطبخ في أقل من ساعة."</p>
+                <div class="author">
+                    <div class="author-img">أ.س</div>
+                    <div><strong>أبو سليمان</strong><br>حي الصحافة</div>
+                </div>
             </div>
             <div class="testimonial-card">
                 <i class="fas fa-quote-right"></i>
-                <p>"شفطوا لي البيارة بسرعة وأسعارهم مناسبة، أنصح فيهم وبقوة."</p>
-                <div class="author"><div class="author-img">خ.ع</div> <div><strong>خالد العتيبي</strong><br>حي الرمال</div></div>
+                <p>"شفطوا لي البيارة بسرعة وأسعارهم مناسبة، أنصح فيهم."</p>
+                <div class="author">
+                    <div class="author-img">خ.ع</div>
+                    <div><strong>خالد العتيبي</strong><br>حي الرمال</div>
+                </div>
             </div>
             <div class="testimonial-card">
                 <i class="fas fa-quote-right"></i>
-                <p>"نظفوا لي الخزان الأرضي وجددوه، صار زي الجديد. شكراً لكم."</p>
-                <div class="author"><div class="author-img">أ.م</div> <div><strong>أم محمد</strong><br>حي الياسمين</div></div>
+                <p>"نظفوا لي الخزان الأرضي وجددوه، صار زي الجديد."</p>
+                <div class="author">
+                    <div class="author-img">أ.م</div>
+                    <div><strong>أم محمد</strong><br>حي الياسمين</div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- CTA النهائي -->
-        <div class="cta-section" id="contact">
-            <h2>ودك تحل مشكلتك الآن؟</h2>
+    <!-- CTA -->
+    <section id="contact" class="container">
+        <div class="cta">
+            <h2>جاهز نخدمك؟</h2>
+            <p>اتصل بنا الآن وفريقنا يتوجه لك فوراً</p>
             <a href="tel:+966507204088" class="cta-phone"><i class="fas fa-phone-alt"></i> 0507204088</a>
-            <p>فريقنا جاهز لخدمتك 24/7</p>
+            <p style="margin-top:20px;">خدمة 24 ساعة – طوال أيام الأسبوع</p>
         </div>
+    </section>
 
-        <!-- الفوتر -->
-        <footer class="footer">
+    <!-- Footer -->
+    <footer>
+        <div class="container">
             <div class="footer-grid">
-                <div>
-                    <h3 class="logo" style="font-size:2rem;">الكمبروسر</h3>
-                    <p style="opacity:0.7; margin-top:15px;">خدمات الصرف الصحي المتطورة في الرياض.</p>
+                <div class="footer-col">
+                    <h4>الكمبروسر</h4>
+                    <p style="color:#475569;">خدمات الصرف الصحي المتطورة في الرياض.</p>
                 </div>
-                <div class="footer-links">
+                <div class="footer-col">
                     <h4>روابط سريعة</h4>
-                    <a href="#home">الرئيسية</a>
-                    <a href="#services">الخدمات</a>
-                    <a href="#contact">اتصل بنا</a>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#services">الخدمات</a></li>
+                        <li><a href="#features">المميزات</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
                 </div>
-                <div class="footer-links">
+                <div class="footer-col">
                     <h4>خدماتنا</h4>
-                    <a href="#service-drain">تسليك مجاري</a>
-                    <a href="#service-septic">شفط بيارات</a>
-                    <a href="#service-tank">تنظيف خزانات</a>
-                    <a href="#service-plumbing">تركيب سباكة</a>
+                    <ul>
+                        <li><a href="#service-drain">تسليك مجاري</a></li>
+                        <li><a href="#service-septic">شفط بيارات</a></li>
+                        <li><a href="#service-tank">تنظيف خزانات</a></li>
+                        <li><a href="#service-plumbing">تركيب سباكة</a></li>
+                    </ul>
                 </div>
-                <div>
-                    <h4>معلومات الاتصال</h4>
-                    <p><i class="fas fa-phone"></i> 0507204088</p>
-                    <p><i class="fab fa-whatsapp"></i> 0507204088</p>
-                    <p><i class="fas fa-clock"></i> 24 ساعة</p>
+                <div class="footer-col">
+                    <h4>اتصال</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 0507204088</li>
+                        <li><i class="fab fa-whatsapp"></i> 0507204088</li>
+                        <li><i class="fas fa-clock"></i> 24 ساعة</li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2026 الكمبروسر - جميع الحقوق محفوظة. تصميم عصري مبهر.</p>
+            <div class="copyright">
+                <p>© 2026 الكمبروسر – جميع الحقوق محفوظة. تصميم مودرن بسيط.</p>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
 
-    <!-- واتساب عائم (إضافي) -->
-    <a href="https://wa.me/966507204088" target="_blank" style="position:fixed; bottom:20px; right:20px; background:#25D366; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:2rem; box-shadow:0 5px 15px rgba(0,0,0,0.3); z-index:100;"><i class="fab fa-whatsapp"></i></a>
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/966507204088" target="_blank" class="floating-wa"><i class="fab fa-whatsapp"></i></a>
 </body>
 </html>
