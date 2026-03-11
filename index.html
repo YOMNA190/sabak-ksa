@@ -12,7 +12,7 @@
       gtag('config', 'AW-18009279735');
     </script>
     <title>المثالية للصرف الصحي والسباكة | 0534990071</title>
-    <!-- SEO meta tags (مختصرة لكن موجودة) -->
+    <!-- SEO meta tags -->
     <meta name="description" content="المثالية: تسليك مجاري، شفط بيارات، تنظيف خزانات، كشف تسربات بدون تكسير. اتصل 0534990071">
     <meta name="keywords" content="تسليك مجاري بالرياض, شفط بيارات, المثالية">
     <!-- Fonts & Icons -->
@@ -51,10 +51,6 @@
         }
         .animate-slide-up {
             animation: slideInUp 0.8s ease-out;
-        }
-        @keyframes fadeInScale {
-            from { transform: scale(0.95); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
         }
         .service-card {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -98,6 +94,7 @@
             background: var(--accent);
             color: var(--primary);
         }
+        /* واتساب عائم (يسار سفلي) */
         .floating-whatsapp {
             position: fixed;
             bottom: 30px;
@@ -116,13 +113,39 @@
             transition: all 0.3s;
             animation: pulse 2s infinite;
         }
+        /* زر اتصال ثابت جديد (يسار سفلي - فوق الواتساب) */
+        .fixed-call-btn {
+            position: fixed;
+            bottom: 120px; /* أعلى من الواتساب */
+            left: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent), #DAA520);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 2rem;
+            box-shadow: 0 10px 25px rgba(201,162,39,0.6);
+            z-index: 99;
+            transition: all 0.3s;
+            animation: pulse-gold 2s infinite;
+            border: 2px solid white;
+        }
+        .fixed-call-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            background: #DAA520;
+        }
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(201,162,39,0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(201,162,39,0); }
+            100% { box-shadow: 0 0 0 0 rgba(201,162,39,0); }
+        }
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
             70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); }
             100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
-        }
-        .floating-whatsapp:hover {
-            transform: scale(1.1) rotate(5deg);
         }
         .section-title {
             position: relative;
@@ -184,22 +207,34 @@
             text-align: center;
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            display: block; /* لجعله رابط */
+            text-decoration: none;
+            color: inherit;
         }
         .quick-item:hover {
             border-color: var(--accent);
             transform: translateY(-5px);
             box-shadow: 0 10px 25px -8px var(--accent);
         }
+        /* إزالة التسطير من الروابط */
+        a {
+            text-decoration: none;
+        }
     </style>
 </head>
 <body class="hero-bg">
 
-    <!-- واتساب عائم -->
+    <!-- واتساب عائم (يسار سفلي) -->
     <a href="https://wa.me/966534990071" target="_blank" class="floating-whatsapp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- الهيدر الجديد -->
+    <!-- زر اتصال ثابت جديد (يسار سفلي - أعلى الواتساب) -->
+    <a href="tel:+966534990071" class="fixed-call-btn">
+        <i class="fas fa-phone"></i>
+    </a>
+
+    <!-- الهيدر -->
     <header class="bg-white/90 backdrop-blur-md fixed w-full z-50 border-b border-[#E2E8F0] py-3">
         <div class="container-custom flex justify-between items-center">
             <a href="#home" class="text-3xl font-black" style="color: var(--primary);">المثالية</a>
@@ -220,7 +255,7 @@
         </div>
     </header>
 
-    <!-- القسم الرئيسي (hero) جديد -->
+    <!-- القسم الرئيسي (hero) -->
     <section id="home" class="pt-28 pb-16 min-h-screen flex items-center">
         <div class="container-custom">
             <div class="grid md:grid-cols-2 gap-12 items-center">
@@ -271,23 +306,23 @@
         </div>
     </section>
 
-    <!-- شريط تمرير الخدمات السريعة (تصميم جديد) -->
+    <!-- شريط تمرير الخدمات السريعة (روابط لكل خدمة) -->
     <section class="py-6">
         <div class="container-custom">
             <div class="quick-slider">
-                <div class="quick-item"><i class="fas fa-toilet text-3xl text-[#C9A227] mb-2"></i><div class="font-bold">تسليك مجاري</div></div>
-                <div class="quick-item"><i class="fas fa-oil-can text-3xl text-[#C9A227] mb-2"></i><div class="font-bold">شفط بيارات</div></div>
-                <div class="quick-item"><i class="fas fa-water text-3xl text-[#C9A227] mb-2"></i><div class="font-bold">تنظيف خزانات</div></div>
-                <div class="quick-item"><i class="fas fa-tools text-3xl text-[#C9A227] mb-2"></i><div class="font-bold">تركيب سباكة</div></div>
-                <div class="quick-item"><i class="fas fa-search text-3xl text-[#C9A227] mb-2"></i><div class="font-bold">كشف تسربات</div></div>
-                <div class="quick-item"><i class="fas fa-broom text-3xl text-[#C9A227] mb-2"></i><div class="font-bold">فتح انسداد</div></div>
-                <div class="quick-item"><i class="fas fa-exclamation-triangle text-3xl text-[#C9A227] mb-2"></i><div class="font-bold">طوارئ 24 س</div></div>
-                <div class="quick-item"><i class="fas fa-phone-alt text-3xl text-[#C9A227] mb-2"></i><div class="font-bold">اتصل بفني</div></div>
+                <a href="#services1" class="quick-item"><i class="fas fa-toilet text-3xl text-[#C9A227] mb-2"></i><div class="font-bold">تسليك مجاري</div></a>
+                <a href="#services2" class="quick-item"><i class="fas fa-oil-can text-3xl text-[#C9A227] mb-2"></i><div class="font-bold">شفط بيارات</div></a>
+                <a href="#services3" class="quick-item"><i class="fas fa-water text-3xl text-[#C9A227] mb-2"></i><div class="font-bold">تنظيف خزانات</div></a>
+                <a href="#services4" class="quick-item"><i class="fas fa-tools text-3xl text-[#C9A227] mb-2"></i><div class="font-bold">تركيب سباكة</div></a>
+                <a href="#services5" class="quick-item"><i class="fas fa-search text-3xl text-[#C9A227] mb-2"></i><div class="font-bold">كشف تسربات</div></a>
+                <a href="#services6" class="quick-item"><i class="fas fa-broom text-3xl text-[#C9A227] mb-2"></i><div class="font-bold">فتح انسداد</div></a>
+                <a href="#emergency" class="quick-item"><i class="fas fa-exclamation-triangle text-3xl text-[#C9A227] mb-2"></i><div class="font-bold">طوارئ 24 س</div></a>
+                <a href="#services8" class="quick-item"><i class="fas fa-phone-alt text-3xl text-[#C9A227] mb-2"></i><div class="font-bold">اتصل بفني</div></a>
             </div>
         </div>
     </section>
 
-    <!-- الخدمات التفصيلية بتصميم كروت جديدة (8 خدمات) -->
+    <!-- الخدمات التفصيلية (مرتبة ومعرّفة بمعرفات فريدة) -->
     <section id="services" class="py-16">
         <div class="container-custom">
             <div class="text-center">
@@ -295,8 +330,8 @@
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">نقدم لك أحدث التقنيات بأسعار منافسة وضمان 30 يوم</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-                <!-- 1. تسليك مجاري -->
-                <div class="service-card">
+                <!-- 1. تسليك مجاري (services1) -->
+                <div id="services1" class="service-card">
                     <div class="h-48 bg-[#0A2647] flex items-center justify-center text-7xl text-[#C9A227]">🚰</div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold mb-3">تسليك مجاري فوري</h3>
@@ -312,8 +347,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- 2. شفط بيارات بالكمبروسر -->
-                <div class="service-card">
+                <!-- 2. شفط بيارات (services2) -->
+                <div id="services2" class="service-card">
                     <div class="h-48 bg-[#0A2647] flex items-center justify-center text-7xl text-[#C9A227]">🛢️</div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold mb-3">شفط بيارات بالكمبروسر</h3>
@@ -329,8 +364,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- 3. تنظيف خزانات -->
-                <div class="service-card">
+                <!-- 3. تنظيف خزانات (services3) -->
+                <div id="services3" class="service-card">
                     <div class="h-48 bg-[#0A2647] flex items-center justify-center text-7xl text-[#C9A227]">💧</div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold mb-3">تنظيف خزانات</h3>
@@ -346,8 +381,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- 4. تركيب سباكة -->
-                <div class="service-card">
+                <!-- 4. تركيب سباكة (services4) -->
+                <div id="services4" class="service-card">
                     <div class="h-48 bg-[#0A2647] flex items-center justify-center text-7xl text-[#C9A227]">🔧</div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold mb-3">تركيب سباكة</h3>
@@ -363,8 +398,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- 5. كشف تسربات -->
-                <div class="service-card">
+                <!-- 5. كشف تسربات (services5) -->
+                <div id="services5" class="service-card">
                     <div class="h-48 bg-[#0A2647] flex items-center justify-center text-7xl text-[#C9A227]">🔍</div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold mb-3">كشف تسربات بدون تكسير</h3>
@@ -380,8 +415,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- 6. فتح انسداد -->
-                <div class="service-card">
+                <!-- 6. فتح انسداد (services6) -->
+                <div id="services6" class="service-card">
                     <div class="h-48 bg-[#0A2647] flex items-center justify-center text-7xl text-[#C9A227]">🧹</div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold mb-3">فتح انسداد المجاري</h3>
@@ -397,8 +432,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- 7. طوارئ 24 ساعة -->
-                <div class="service-card">
+                <!-- 7. طوارئ 24 ساعة (emergency) -->
+                <div id="emergency" class="service-card">
                     <div class="h-48 bg-[#0A2647] flex items-center justify-center text-7xl text-[#C9A227]">🚨</div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold mb-3">طوارئ 24 ساعة</h3>
@@ -414,8 +449,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- 8. اتصل بفني -->
-                <div class="service-card">
+                <!-- 8. اتصل بفني (services8) -->
+                <div id="services8" class="service-card">
                     <div class="h-48 bg-[#0A2647] flex items-center justify-center text-7xl text-[#C9A227]">📞</div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold mb-3">اتصل بفني الآن</h3>
@@ -435,7 +470,7 @@
         </div>
     </section>
 
-    <!-- إحصائيات بتصميم جديد -->
+    <!-- إحصائيات -->
     <section class="py-12 bg-[#0A2647] text-white">
         <div class="container-custom">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -459,7 +494,7 @@
         </div>
     </section>
 
-    <!-- المميزات (محدث) -->
+    <!-- المميزات -->
     <section id="features" class="py-16">
         <div class="container-custom">
             <div class="text-center">
@@ -494,7 +529,7 @@
         </div>
     </section>
 
-    <!-- المناطق التي نغطيها (تصميم بسيط) -->
+    <!-- المناطق التي نغطيها -->
     <section class="py-12 bg-[#F4F7FC]">
         <div class="container-custom">
             <h2 class="section-title center text-center">نغطي جميع أحياء الرياض</h2>
@@ -511,7 +546,7 @@
         </div>
     </section>
 
-    <!-- آراء العملاء (كروت جديدة) -->
+    <!-- آراء العملاء -->
     <section id="testimonials" class="py-16">
         <div class="container-custom">
             <h2 class="section-title center text-center">ماذا قال عملاؤنا؟</h2>
@@ -538,7 +573,7 @@
         </div>
     </section>
 
-    <!-- CTA الرئيسي -->
+    <!-- CTA الرئيسي (contact) -->
     <section id="contact" class="py-20 bg-[#0A2647] text-white text-center">
         <div class="container-custom">
             <h2 class="text-4xl md:text-5xl font-black mb-4">اتصل بنا الآن</h2>
@@ -549,7 +584,7 @@
         </div>
     </section>
 
-    <!-- فوتر جديد -->
+    <!-- فوتر -->
     <footer class="bg-[#051A2F] text-white py-8">
         <div class="container-custom text-center">
             <p>المثالية لخدمات الصرف الصحي والسباكة © 2025 | جميع الحقوق محفوظة</p>
@@ -557,8 +592,6 @@
         </div>
     </footer>
 
-    <script>
-        // كشف التمرير لإضافة active على العناصر (اختياري)
-    </script>
+    <!-- (اختياري) لا حاجة لسكريبت إضافي -->
 </body>
 </html>
