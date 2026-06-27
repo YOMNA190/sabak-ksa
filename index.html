@@ -323,6 +323,7 @@
       color: #0A1A2F;
       direction: rtl;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; height: auto; }
@@ -412,19 +413,20 @@
 
     /* ---- HERO ---- */
     .hero {
-      padding: 7rem 0 4rem;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
+      padding: 8rem 0 4rem;
+      min-height: auto;
       background: linear-gradient(150deg, #F8FAFE 0%, #EEF3FB 60%, #F0F5FD 100%);
     }
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2.5rem;
+      gap: 3rem;
       align-items: center;
     }
-    @media(min-width:900px){ .hero-grid { grid-template-columns: 1fr 1fr; } }
+    @media(min-width:992px){ 
+      .hero-grid { grid-template-columns: 1.2fr 0.8fr; } 
+      .hero { padding: 10rem 0 6rem; }
+    }
 
     .badge {
       display: inline-flex; align-items: center; gap: 0.4rem;
@@ -442,7 +444,7 @@
       font-weight: 900;
       color: var(--primary);
       line-height: 1.25;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
     h1 em {
       color: var(--accent);
@@ -452,16 +454,17 @@
       font-size: 1.1rem;
       color: var(--gray);
       line-height: 1.8;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
+      max-width: 600px;
     }
-    .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-hover));
       color: var(--primary);
-      padding: 0.85rem 1.8rem;
+      padding: 1rem 2rem;
       border-radius: 50px;
       font-weight: 900;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       display: inline-flex; align-items: center; gap: 0.5rem;
       box-shadow: 0 8px 25px -5px rgba(201,162,39,0.45);
       transition: all 0.25s;
@@ -471,1029 +474,588 @@
     .btn-secondary {
       border: 2px solid var(--primary);
       color: var(--primary);
-      padding: 0.8rem 1.8rem;
+      padding: 0.9rem 2rem;
       border-radius: 50px;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 1.1rem;
       display: inline-flex; align-items: center; gap: 0.5rem;
       transition: all 0.25s;
     }
     .btn-secondary:hover { background: var(--primary); color: #fff; }
 
-    /* Hero stats card */
-    .hero-card {
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 1.75rem;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(201,162,39,0.15);
+    .hero-image-wrapper {
+      position: relative;
+      width: 100%;
     }
+    .hero-main-img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      border-radius: 2rem;
+      box-shadow: 0 20px 50px -15px rgba(10,38,71,0.2);
+    }
+    .hero-card-floating {
+      position: absolute;
+      bottom: -30px;
+      right: -20px;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      border: 1px solid rgba(201,162,39,0.2);
+      max-width: 280px;
+      z-index: 10;
+    }
+    @media(max-width: 768px) {
+      .hero-main-img { height: 300px; }
+      .hero-card-floating { 
+        position: relative; 
+        right: 0; bottom: 0; 
+        margin-top: -50px; 
+        margin-right: auto; 
+        margin-left: auto;
+        max-width: 90%;
+      }
+    }
+
     .stat-row {
       display: flex; align-items: center; gap: 1rem;
-      padding: 1rem;
-      border-radius: 1rem;
-      transition: background 0.2s;
+      padding: 0.75rem 0;
     }
-    .stat-row:hover { background: var(--light-gray); }
+    .stat-row:not(:last-child) { border-bottom: 1px solid rgba(0,0,0,0.05); }
     .stat-icon {
-      width: 52px; height: 52px;
+      width: 44px; height: 44px;
       background: var(--primary);
-      border-radius: 14px;
+      border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
       color: var(--accent);
-      font-size: 1.4rem;
+      font-size: 1.2rem;
     }
-    .stat-title { font-weight: 800; font-size: 1.05rem; color: var(--primary); }
-    .stat-sub { font-size: 0.88rem; color: var(--gray); margin-top: 0.1rem; }
+    .stat-title { font-weight: 800; font-size: 1rem; color: var(--primary); }
+    .stat-sub { font-size: 0.85rem; color: var(--gray); }
 
     /* ---- TRUST BAR ---- */
     .trust-bar {
       background: var(--primary);
-      padding: 1.2rem 0;
-      overflow: hidden;
+      padding: 1.5rem 0;
     }
     .trust-row {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 2rem;
+      gap: 1.5rem 3rem;
     }
     .trust-item {
       display: flex; align-items: center; gap: 0.6rem;
       color: #fff; font-weight: 700; font-size: 0.95rem;
-      white-space: nowrap;
     }
-    .trust-item i { color: var(--accent); font-size: 1.1rem; }
+    .trust-item i { color: var(--accent); }
 
     /* ---- SECTIONS ---- */
-    section { padding: 5rem 0; }
-    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    section { padding: 6rem 0; }
+    .section-header { text-align: center; margin-bottom: 4rem; }
     h2 {
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
       font-weight: 900;
       color: var(--primary);
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
       position: relative;
       display: inline-block;
     }
     h2::after {
       content: '';
       position: absolute;
-      bottom: -8px; left: 50%; transform: translateX(-50%);
-      width: 70px; height: 4px;
+      bottom: -10px; left: 50%; transform: translateX(-50%);
+      width: 80px; height: 5px;
       background: var(--accent);
-      border-radius: 4px;
+      border-radius: 5px;
     }
     .section-desc {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       color: var(--gray);
-      max-width: 600px;
-      margin: 1.2rem auto 0;
+      max-width: 700px;
+      margin: 1.5rem auto 0;
       line-height: 1.8;
     }
 
-    /* ---- FEATURES GRID ---- */
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    .feature-card {
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 2rem 1.75rem;
-      border: 1px solid rgba(10,38,71,0.07);
-      box-shadow: 0 4px 20px -8px rgba(10,38,71,0.1);
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    .feature-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px -12px rgba(10,38,71,0.2);
-      border-color: var(--accent);
-    }
-    .feature-icon {
-      width: 60px; height: 60px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
-      border-radius: 16px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--accent);
-      font-size: 1.6rem;
-      margin-bottom: 1.2rem;
-    }
-    .feature-title {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 0.6rem;
-    }
-    .feature-text { font-size: 0.95rem; color: var(--gray); line-height: 1.7; }
-
-    /* ---- STEPS ---- */
-    .steps-bg { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); }
-    .steps-bg h2, .steps-bg .section-desc { color: #fff; }
-    .steps-bg h2::after { background: var(--accent); }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      counter-reset: step;
-    }
-    .step-card {
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: var(--radius);
-      padding: 2rem 1.5rem;
-      text-align: center;
-      color: #fff;
-      position: relative;
-      transition: background 0.3s;
-    }
-    .step-card:hover { background: rgba(255,255,255,0.14); }
-    .step-num {
-      width: 50px; height: 50px;
-      background: var(--accent);
-      color: var(--primary);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem; font-weight: 900;
-      margin: 0 auto 1.2rem;
-    }
-    .step-title { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.5rem; }
-    .step-text { font-size: 0.9rem; opacity: 0.85; line-height: 1.7; }
-
-    /* ---- WHY US ---- */
-    .why-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-    @media(min-width:900px){ .why-grid { grid-template-columns: 1fr 1fr; } }
-
-    .why-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-    .why-item {
-      display: flex; align-items: flex-start; gap: 1rem;
-      background: #fff;
-      border-radius: 1rem;
-      padding: 1.2rem 1.4rem;
-      box-shadow: 0 3px 15px -5px rgba(10,38,71,0.1);
-      border-right: 4px solid var(--accent);
-      transition: transform 0.2s;
-    }
-    .why-item:hover { transform: translateX(-4px); }
-    .why-icon { color: var(--accent); font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
-    .why-content h3 { font-size: 1rem; font-weight: 800; color: var(--primary); margin-bottom: 0.25rem; }
-    .why-content p { font-size: 0.9rem; color: var(--gray); line-height: 1.6; }
-
-    .why-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-    .stat-card {
-      background: #fff;
-      border-radius: 1.25rem;
-      padding: 1.75rem 1.5rem;
-      text-align: center;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(201,162,39,0.12);
-    }
-    .stat-num {
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 0.4rem;
-    }
-    .stat-label { font-size: 0.88rem; color: var(--gray); font-weight: 600; }
-
-    /* ---- SERVICES ---- */
+    /* ---- SERVICES GRID ---- */
     .services-bg { background: var(--light-gray); }
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
     }
     .service-card {
       background: #fff;
-      border-radius: var(--radius);
-      padding: 2rem 1.75rem;
-      border: 1px solid rgba(10,38,71,0.07);
-      box-shadow: 0 4px 20px -8px rgba(10,38,71,0.08);
-      transition: all 0.3s;
-      text-align: center;
+      border-radius: 2rem;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(10,38,71,0.05);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(10,38,71,0.05);
     }
     .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px -12px rgba(10,38,71,0.18);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(10,38,71,0.15);
       border-color: var(--accent);
     }
-    .service-icon {
-      width: 70px; height: 70px;
-      background: linear-gradient(135deg, rgba(10,38,71,0.06), rgba(10,38,71,0.1));
+    .service-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .service-content {
+      padding: 2rem;
+      text-align: center;
+      flex-grow: 1;
+      position: relative;
+    }
+    .service-icon-box {
+      width: 60px; height: 60px;
+      background: #fff;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.8rem;
-      margin: 0 auto 1.2rem;
+      margin: -50px auto 1.5rem;
+      position: relative;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
       color: var(--primary);
+      font-size: 1.5rem;
       transition: all 0.3s;
     }
-    .service-card:hover .service-icon {
-      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+    .service-card:hover .service-icon-box {
+      background: var(--accent);
       color: var(--primary);
     }
-    .service-name { font-size: 1.1rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; }
-    .service-desc { font-size: 0.9rem; color: var(--gray); line-height: 1.65; }
+    .service-name { font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-bottom: 0.75rem; }
+    .service-desc { font-size: 1rem; color: var(--gray); line-height: 1.7; }
+
+    /* ---- REVIEWS ---- */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .review-card {
+      background: #fff;
+      border-radius: 1.5rem;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.05);
+      position: relative;
+    }
+    .review-card::before {
+      content: '“';
+      position: absolute;
+      top: 10px; right: 20px;
+      font-size: 5rem;
+      color: var(--accent);
+      opacity: 0.2;
+      font-family: serif;
+    }
+    .stars { color: #F59E0B; font-size: 1.2rem; margin-bottom: 1rem; }
+    .review-text { font-size: 1.05rem; color: var(--gray); line-height: 1.8; margin-bottom: 1.5rem; font-style: italic; }
+    .reviewer { font-weight: 800; color: var(--primary); font-size: 1.1rem; }
+    .reviewer span { display: block; font-weight: 400; color: var(--gray); font-size: 0.9rem; margin-top: 0.25rem; }
 
     /* ---- FAQ ---- */
-    .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+    .faq-list { max-width: 850px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
     .faq-item {
       background: #fff;
-      border-radius: 1rem;
-      border: 1px solid rgba(10,38,71,0.08);
+      border-radius: 1.25rem;
+      border: 1px solid rgba(0,0,0,0.05);
       overflow: hidden;
-      box-shadow: 0 3px 12px -5px rgba(10,38,71,0.08);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     }
     .faq-q {
       width: 100%;
       background: none;
       border: none;
-      padding: 1.25rem 1.5rem;
+      padding: 1.5rem;
       display: flex; justify-content: space-between; align-items: center;
       cursor: pointer;
-      font-family: 'Tajawal', sans-serif;
-      font-size: 1rem;
+      font-family: inherit;
+      font-size: 1.1rem;
       font-weight: 800;
       color: var(--primary);
       text-align: right;
       gap: 1rem;
-      transition: background 0.2s;
     }
     .faq-q:hover { background: var(--light-gray); }
-    .faq-q[aria-expanded="true"] { color: var(--accent); }
-    .faq-chevron { color: var(--accent); font-size: 1rem; flex-shrink: 0; transition: transform 0.3s; }
+    .faq-chevron { color: var(--accent); transition: transform 0.3s; }
     .faq-q[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); }
     .faq-a {
       display: none;
-      padding: 0 1.5rem 1.25rem;
-      font-size: 0.95rem;
+      padding: 0 1.5rem 1.5rem;
+      font-size: 1.05rem;
       color: var(--gray);
       line-height: 1.8;
-      border-top: 1px solid rgba(10,38,71,0.06);
+      border-top: 1px solid rgba(0,0,0,0.05);
     }
     .faq-a.open { display: block; }
-
-    /* ---- CTA SECTION ---- */
-    .cta-section {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-      padding: 5rem 0;
-      text-align: center;
-    }
-    .cta-section h2 { color: #fff; }
-    .cta-section h2::after { background: var(--accent); }
-    .cta-section p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin: 1.5rem auto 2.5rem; max-width: 550px; line-height: 1.8; }
-    .cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
-    .btn-wa-cta {
-      background: var(--green);
-      color: #fff;
-      padding: 1rem 2.2rem;
-      border-radius: 50px;
-      font-weight: 900;
-      font-size: 1.1rem;
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      box-shadow: 0 8px 25px -5px rgba(37,211,102,0.5);
-      transition: all 0.25s;
-      border: none; cursor: pointer;
-    }
-    .btn-wa-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 30px -5px rgba(37,211,102,0.7); background: #1ebe58; }
-    .btn-call-cta {
-      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-      color: var(--primary);
-      padding: 1rem 2.2rem;
-      border-radius: 50px;
-      font-weight: 900;
-      font-size: 1.1rem;
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      box-shadow: 0 8px 25px -5px rgba(201,162,39,0.5);
-      transition: all 0.25s;
-      border: none; cursor: pointer;
-    }
-    .btn-call-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 30px -5px rgba(201,162,39,0.7); }
-
-    /* ---- FOOTER ---- */
-    footer {
-      background: #06172B;
-      color: rgba(255,255,255,0.8);
-      padding: 3rem 0 2rem;
-      font-size: 0.9rem;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-    .footer-brand .logo { font-size: 1.4rem; color: #fff; }
-    .footer-brand p { margin-top: 0.75rem; line-height: 1.7; }
-    .footer-title { font-weight: 800; color: #fff; margin-bottom: 1rem; font-size: 1rem; }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .footer-links a { color: rgba(255,255,255,0.7); transition: color 0.2s; }
-    .footer-links a:hover { color: var(--accent); }
-    .footer-contact-item { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.65rem; }
-    .footer-contact-item i { color: var(--accent); width: 18px; }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 1.5rem;
-      text-align: center;
-      color: rgba(255,255,255,0.5);
-      font-size: 0.85rem;
-    }
 
     /* ---- FLOATING BUTTONS ---- */
     .floating-wa {
       position: fixed;
-      bottom: 24px; left: 24px;
-      width: 60px; height: 60px;
+      bottom: 30px; left: 30px;
+      width: 65px; height: 65px;
       background: var(--green);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      color: #fff; font-size: 1.9rem;
-      box-shadow: 0 8px 25px rgba(37,211,102,0.45);
-      z-index: 900;
-      transition: all 0.25s;
-      animation: pulseGreen 2.5s infinite;
-      border: none; cursor: pointer;
+      color: #fff; font-size: 2.2rem;
+      box-shadow: 0 10px 30px rgba(37,211,102,0.4);
+      z-index: 999;
+      transition: all 0.3s;
+      animation: pulseGreen 2s infinite;
     }
-    .floating-wa:hover { transform: scale(1.12); background: #1ebe58; }
-
     .floating-call {
       position: fixed;
-      bottom: 100px; left: 24px;
-      width: 60px; height: 60px;
+      bottom: 110px; left: 30px;
+      width: 65px; height: 65px;
       background: linear-gradient(135deg, var(--accent), var(--accent-hover));
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      color: var(--primary); font-size: 1.7rem;
-      box-shadow: 0 8px 25px rgba(201,162,39,0.5);
-      z-index: 900;
-      transition: all 0.25s;
-      animation: pulseGold 2.5s infinite;
-      border: 2px solid rgba(255,255,255,0.4);
-      cursor: pointer;
+      color: var(--primary); font-size: 2rem;
+      box-shadow: 0 10px 30px rgba(201,162,39,0.4);
+      z-index: 999;
+      transition: all 0.3s;
+      animation: pulseGold 2s infinite;
     }
-    .floating-call:hover { transform: scale(1.12); }
+    @keyframes pulseGreen { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
+    @keyframes pulseGold { 0% { box-shadow: 0 0 0 0 rgba(201,162,39,0.7); } 70% { box-shadow: 0 0 0 15px rgba(201,162,39,0); } 100% { box-shadow: 0 0 0 0 rgba(201,162,39,0); } }
 
-    @keyframes pulseGreen {
-      0%,100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
-      50% { box-shadow: 0 0 0 14px rgba(37,211,102,0); }
-    }
-    @keyframes pulseGold {
-      0%,100% { box-shadow: 0 0 0 0 rgba(201,162,39,0.5); }
-      50% { box-shadow: 0 0 0 14px rgba(201,162,39,0); }
-    }
-
-    /* ---- STICKY MOBILE CTA BAR ---- */
+    /* ---- STICKY MOBILE BAR ---- */
     .sticky-bar {
       position: fixed;
       bottom: 0; left: 0; right: 0;
       display: flex;
-      z-index: 800;
+      z-index: 998;
+      box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
     }
     @media(min-width:768px){ .sticky-bar { display: none; } }
-    .sticky-call {
+    .sticky-btn {
       flex: 1;
-      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-      color: var(--primary);
-      border: none; cursor: pointer;
-      padding: 1rem;
-      font-family: 'Tajawal', sans-serif;
-      font-size: 1rem; font-weight: 900;
+      padding: 1.2rem;
+      font-weight: 900;
+      font-size: 1.1rem;
       display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      border: none;
     }
-    .sticky-wa {
-      flex: 1;
-      background: var(--green);
-      color: #fff;
-      border: none; cursor: pointer;
-      padding: 1rem;
-      font-family: 'Tajawal', sans-serif;
-      font-size: 1rem; font-weight: 900;
-      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-    }
+    .sticky-call { background: var(--accent); color: var(--primary); }
+    .sticky-wa { background: var(--green); color: #fff; }
 
-    /* ---- REVIEWS ---- */
-    .reviews-grid {
+    /* ---- ANIMATIONS ---- */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ---- STEPS ---- */
+    .steps-bg { background: var(--primary); color: #fff; }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    .step-card {
+      text-align: center;
+      padding: 1rem;
+    }
+    .step-num {
+      width: 60px; height: 60px;
+      background: var(--accent);
+      color: var(--primary);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.5rem; font-weight: 900;
+      box-shadow: 0 0 0 8px rgba(201,162,39,0.2);
+    }
+    .step-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.75rem; }
+    .step-text { font-size: 0.95rem; opacity: 0.8; line-height: 1.6; }
+
+    /* ---- CAUSES ---- */
+    .causes-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
     }
-    .review-card {
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 1.75rem;
-      border: 1px solid rgba(10,38,71,0.07);
-      box-shadow: 0 4px 20px -8px rgba(10,38,71,0.1);
-    }
-    .stars { color: #F59E0B; font-size: 1.1rem; margin-bottom: 0.75rem; }
-    .review-text { font-size: 0.95rem; color: var(--gray); line-height: 1.7; margin-bottom: 1rem; }
-    .reviewer { font-weight: 800; color: var(--primary); font-size: 0.95rem; }
-    .reviewer span { font-weight: 400; color: var(--gray); font-size: 0.85rem; }
-
-    /* ---- BREADCRUMB ---- */
-    .breadcrumb {
-      font-size: 0.85rem;
-      color: var(--gray);
-      padding: 0.75rem 0;
-      display: flex; gap: 0.5rem; align-items: center;
-    }
-    .breadcrumb a { color: var(--primary); font-weight: 600; }
-    .breadcrumb a:hover { color: var(--accent); }
-    .breadcrumb i { font-size: 0.7rem; opacity: 0.5; }
-
-    /* ---- CAUSES SECTION ---- */
-    .causes-bg { background: var(--light-gray); }
-    .causes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.25rem;
-    }
     .cause-item {
       background: #fff;
-      border-radius: 1rem;
-      padding: 1.4rem 1.5rem;
+      padding: 1.5rem;
+      border-radius: 1.25rem;
       display: flex; align-items: flex-start; gap: 1rem;
-      border: 1px solid rgba(10,38,71,0.07);
-      box-shadow: 0 3px 12px -5px rgba(10,38,71,0.08);
-      transition: border-color 0.2s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
-    .cause-item:hover { border-color: var(--accent); }
-    .cause-num {
-      width: 36px; height: 36px;
+    .cause-icon-num {
+      width: 35px; height: 35px;
       background: var(--primary);
       color: var(--accent);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-weight: 900; font-size: 0.95rem;
       flex-shrink: 0;
-    }
-    .cause-text h3 { font-size: 0.95rem; font-weight: 800; color: var(--primary); margin-bottom: 0.25rem; }
-    .cause-text p { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
-
-    /* ---- ANIMATIONS ---- */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+      font-weight: 900;
     }
 
-    /* ---- UTILITY ---- */
-    .text-center { text-align: center; }
-    .mt-1 { margin-top: 0.5rem; }
-    .mt-2 { margin-top: 1rem; }
-    .mb-0 { margin-bottom: 0; }
+    /* ---- FOOTER ---- */
+    footer {
+      background: #05101E;
+      color: rgba(255,255,255,0.7);
+      padding: 5rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-title { color: #fff; font-weight: 800; margin-bottom: 1.5rem; font-size: 1.2rem; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.75rem; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-contact-item { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+    .footer-contact-item i { color: var(--accent); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem; text-align: center; font-size: 0.9rem; }
   </style>
 </head>
 
 <body>
 
   <!-- ======================================================
-       FLOATING BUTTONS (Always visible)
+       FLOATING BUTTONS
        ====================================================== -->
   <a href="https://wa.me/966506482005?text=السلام%20عليكم،%20أريد%20الاستفسار%20عن%20خدمة%20تسليك%20المجاري%20بالكمبروسر"
-     target="_blank" rel="noopener"
-     onclick="return gtagWa('https://wa.me/966506482005')"
-     class="floating-wa"
-     aria-label="تواصل عبر واتساب لتسليك المجاري">
-    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+     target="_blank" rel="noopener" class="floating-wa" aria-label="واتساب">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="tel:+966506482005" class="floating-call" aria-label="اتصال">
+    <i class="fas fa-phone"></i>
   </a>
 
-  <button onclick="return gtagCall('tel:+966506482005')"
-          class="floating-call"
-          aria-label="اتصل الآن لتسليك المجاري">
-    <i class="fas fa-phone" aria-hidden="true"></i>
-  </button>
-
-  <!-- Sticky bottom bar (mobile only) -->
-  <div class="sticky-bar" role="complementary" aria-label="أزرار التواصل السريع">
-    <button onclick="return gtagCall('tel:+966506482005')" class="sticky-call">
-      <i class="fas fa-phone" aria-hidden="true"></i> اتصل الآن
-    </button>
-    <button onclick="return gtagWa('https://wa.me/966506482005')" class="sticky-wa">
-      <i class="fab fa-whatsapp" aria-hidden="true"></i> واتساب
-    </button>
+  <!-- Mobile Sticky Bar -->
+  <div class="sticky-bar">
+    <a href="tel:+966506482005" class="sticky-btn sticky-call">
+      <i class="fas fa-phone"></i> اتصل الآن
+    </a>
+    <a href="https://wa.me/966506482005" class="sticky-btn sticky-wa">
+      <i class="fab fa-whatsapp"></i> واتساب
+    </a>
   </div>
 
   <!-- ======================================================
        HEADER
        ====================================================== -->
-  <header role="banner">
+  <header>
     <div class="container">
       <div class="inner">
-        <a href="#home" class="logo" aria-label="المثالية للصرف الصحي - الرئيسية">
-          المثالية <span>للصرف الصحي</span>
-        </a>
-
-        <nav role="navigation" aria-label="القائمة الرئيسية">
+        <a href="#home" class="logo">المثالية <span>للصرف الصحي</span></a>
+        <nav>
           <a href="#home">الرئيسية</a>
-          <a href="#features">المميزات</a>
           <a href="#services">خدماتنا</a>
-          <a href="#steps">خطوات العمل</a>
-          <a href="#faq">الأسئلة الشائعة</a>
+          <a href="#features">المميزات</a>
+          <a href="#faq">الأسئلة</a>
           <a href="#contact">تواصل معنا</a>
         </nav>
-
         <div class="header-ctas">
-          <a href="https://wa.me/966506482005"
-             target="_blank" rel="noopener"
-             onclick="return gtagWa('https://wa.me/966506482005')"
-             class="btn-wa-header"
-             aria-label="واتساب">
-            <i class="fab fa-whatsapp" aria-hidden="true"></i>
-            <span class="hidden-sm">واتساب</span>
+          <a href="tel:+966506482005" class="btn-call-header">
+            <i class="fas fa-phone"></i> 0506482005
           </a>
-          <button onclick="return gtagCall('tel:+966506482005')"
-                  class="btn-call-header"
-                  aria-label="اتصل الآن 0506482005">
-            <i class="fas fa-phone" aria-hidden="true"></i>
-            <span class="hidden-sm">اتصل الآن</span>
-          </button>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- ======================================================
-       MAIN CONTENT
-       ====================================================== -->
-  <main id="main-content" role="main">
-
-    <!-- BREADCRUMB (SEO) -->
-    <div style="background:#fff; border-bottom: 1px solid rgba(10,38,71,0.06); padding-top: 5rem;">
-      <div class="container">
-        <nav class="breadcrumb" aria-label="مسار التنقل">
-          <a href="/">الرئيسية</a>
-          <i class="fas fa-chevron-left" aria-hidden="true"></i>
-          <span aria-current="page">تسليك مجاري بالكمبروسر</span>
-        </nav>
-      </div>
-    </div>
+  <main id="main-content">
 
     <!-- ================================================
          HERO SECTION
          ================================================ -->
-    <section id="home" class="hero" aria-labelledby="hero-heading">
+    <section id="home" class="hero">
       <div class="container">
         <div class="hero-grid">
-
-          <!-- Hero Text -->
-          <div>
-            <div class="badge" aria-label="ميزة رئيسية">
-              <i class="fas fa-bolt" aria-hidden="true"></i>
-              تقنية الكمبروسر — بدون تكسير
-            </div>
-
-            <h1 id="hero-heading">
-              خدمة تسليك مجاري بالكمبروسر
-              <em>في الرياض</em>
-            </h1>
-
+          <div class="hero-text-content">
+            <div class="badge"><i class="fas fa-bolt"></i> تقنية الكمبروسر — بدون تكسير</div>
+            <h1>تسليك مجاري بالكمبروسر <em>في الرياض</em></h1>
             <p class="hero-desc">
-              فتح انسداد المجاري والبيارات بتقنية ضغط الهواء العالي (الكمبروسر) — أسرع وأنظف وأكثر أمانًا. خدمة طوارئ متاحة 24 ساعة / 7 أيام في الرياض. ضمان 30 يومًا على جميع الأعمال.
+              نحن متخصصون في فتح انسداد المجاري والبيارات بأحدث تقنيات ضغط الهواء العالي. خدمة سريعة، نظيفة، وبدون أي تكسير في منزلك. متواجدون لخدمتكم 24 ساعة.
             </p>
-
             <div class="hero-ctas">
-              <button onclick="return gtagCall('tel:+966506482005')"
-                      class="btn-primary"
-                      aria-label="اتصل الآن لتسليك المجاري بالكمبروسر">
-                <i class="fas fa-phone-volume" aria-hidden="true"></i>
-                اتصل الآن — 0506482005
-              </button>
-              <a href="https://wa.me/966506482005?text=أريد%20خدمة%20تسليك%20مجاري%20بالكمبروسر"
-                 target="_blank" rel="noopener"
-                 onclick="return gtagWa('https://wa.me/966506482005')"
-                 class="btn-secondary"
-                 aria-label="تواصل عبر واتساب">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                واتساب فوري
+              <a href="tel:+966506482005" class="btn-primary">
+                <i class="fas fa-phone-volume"></i> اتصل الآن — 0506482005
+              </a>
+              <a href="https://wa.me/966506482005" class="btn-secondary">
+                <i class="fab fa-whatsapp"></i> واتساب فوري
               </a>
             </div>
           </div>
 
-          <!-- Hero Image -->
-          <div class="hero-image reveal" style="position: relative;">
-            <img src="assets/images/hero.jpg" alt="تسليك مجاري بالكمبروسر في الرياض" style="width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); object-fit: cover; height: 400px;">
-            <div class="hero-card" aria-label="مميزات الخدمة السريعة" style="position: absolute; bottom: -20px; right: -20px; max-width: 300px; z-index: 10;">
-            <div class="stat-row">
-              <div class="stat-icon" aria-hidden="true">
-                <i class="fas fa-clock"></i>
+          <div class="hero-image-wrapper reveal">
+            <img src="assets/images/hero.jpg" alt="فني تسليك مجاري الرياض" class="hero-main-img">
+            <div class="hero-card-floating">
+              <div class="stat-row">
+                <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                <div>
+                  <div class="stat-title">خدمة طوارئ 24/7</div>
+                  <div class="stat-sub">نصلك في أي وقت</div>
+                </div>
               </div>
-              <div>
-                <div class="stat-title">خدمة طوارئ 24/7</div>
-                <div class="stat-sub">متاحون طوال الأسبوع — حتى الأعياد والعطل</div>
+              <div class="stat-row">
+                <div class="stat-icon"><i class="fas fa-truck-fast"></i></div>
+                <div>
+                  <div class="stat-title">وصول خلال 30 دقيقة</div>
+                  <div class="stat-sub">أسرع استجابة في الرياض</div>
+                </div>
               </div>
-            </div>
-
-            <div class="stat-row">
-              <div class="stat-icon" aria-hidden="true">
-                <i class="fas fa-truck-fast"></i>
-              </div>
-              <div>
-                <div class="stat-title">وصول خلال 30 دقيقة</div>
-                <div class="stat-sub">أسرع استجابة لطوارئ المجاري في الرياض</div>
-              </div>
-            </div>
-
-            <div class="stat-row">
-              <div class="stat-icon" aria-hidden="true">
-                <i class="fas fa-shield-halved"></i>
-              </div>
-              <div>
-                <div class="stat-title">ضمان 30 يومًا</div>
-                <div class="stat-sub">نعود مجانًا إذا عاد الانسداد خلال الضمان</div>
-              </div>
-            </div>
-
-            <div class="stat-row">
-              <div class="stat-icon" aria-hidden="true">
-                <i class="fas fa-award"></i>
-              </div>
-              <div>
-                <div class="stat-title">أكثر من 320 عميل راضٍ</div>
-                <div class="stat-sub">تقييم 4.9 من 5 نجوم في الرياض</div>
+              <div class="stat-row">
+                <div class="stat-icon"><i class="fas fa-shield-check"></i></div>
+                <div>
+                  <div class="stat-title">ضمان 30 يوم</div>
+                  <div class="stat-sub">جودة عمل مضمونة</div>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ================================================
-         TRUST BAR
-         ================================================ -->
-    <div class="trust-bar" role="complementary" aria-label="ضمانات الخدمة">
+    <!-- Trust Bar -->
+    <div class="trust-bar">
       <div class="container">
         <div class="trust-row">
-          <div class="trust-item">
-            <i class="fas fa-check-circle" aria-hidden="true"></i>
-            <span>بدون تكسير</span>
-          </div>
-          <div class="trust-item">
-            <i class="fas fa-star" aria-hidden="true"></i>
-            <span>تقييم 4.9 ⭐</span>
-          </div>
-          <div class="trust-item">
-            <i class="fas fa-shield-alt" aria-hidden="true"></i>
-            <span>ضمان 30 يوم</span>
-          </div>
-          <div class="trust-item">
-            <i class="fas fa-bolt" aria-hidden="true"></i>
-            <span>وصول 30 دقيقة</span>
-          </div>
-          <div class="trust-item">
-            <i class="fas fa-clock" aria-hidden="true"></i>
-            <span>خدمة 24/7</span>
-          </div>
-          <div class="trust-item">
-            <i class="fas fa-users" aria-hidden="true"></i>
-            <span>+320 عميل</span>
-          </div>
+          <div class="trust-item"><i class="fas fa-check-circle"></i> بدون تكسير</div>
+          <div class="trust-item"><i class="fas fa-star"></i> تقييم 4.9 ⭐</div>
+          <div class="trust-item"><i class="fas fa-shield-alt"></i> ضمان حقيقي</div>
+          <div class="trust-item"><i class="fas fa-users"></i> +320 عميل راضٍ</div>
         </div>
       </div>
     </div>
 
     <!-- ================================================
-         H2-1: مميزات تسليك المجاري بالكمبروسر
+         SERVICES SECTION
          ================================================ -->
-    <section id="features" aria-labelledby="features-heading">
+    <section id="services" class="services-bg">
       <div class="container">
         <header class="section-header">
-          <h2 id="features-heading">مميزات تسليك المجاري بالكمبروسر</h2>
-          <p class="section-desc">
-            تقنية الكمبروسر هي الحل الاحترافي الأمثل لفتح انسداد الصرف الصحي — تعمل بدون تكسير وبكفاءة عالية تدوم طويلًا
-          </p>
-        </header>
-
-        <div class="grid-3">
-          <article class="feature-card reveal">
-            <div class="feature-icon" aria-hidden="true"><i class="fas fa-ban"></i></div>
-            <h3 class="feature-title">بدون تكسير أو حفر</h3>
-            <p class="feature-text">
-              على عكس الطرق التقليدية، تسليك المجاري بالكمبروسر لا يتطلب تكسير الجدران أو الأرضيات. الحل سريع ونظيف دون أي أضرار في ممتلكاتك.
-            </p>
-          </article>
-
-          <article class="feature-card reveal">
-            <div class="feature-icon" aria-hidden="true"><i class="fas fa-gauge-high"></i></div>
-            <h3 class="feature-title">ضغط عالٍ يفتح أصعب الانسدادات</h3>
-            <p class="feature-text">
-              يولّد الكمبروسر ضغطًا يصل إلى 350 بار، ما يُفتّت تراكمات الشحوم والجير والمواد الصلبة في المواسير التي تعجز عنها الطرق الأخرى.
-            </p>
-          </article>
-
-          <article class="feature-card reveal">
-            <div class="feature-icon" aria-hidden="true"><i class="fas fa-leaf"></i></div>
-            <h3 class="feature-title">آمن للمواسير والبيئة</h3>
-            <p class="feature-text">
-              لا كيماويات ضارة — ضغط الهواء أو المياه النظيفة فقط. طريقة صديقة للبيئة وآمنة على جميع أنواع المواسير (PVC - حديد - خرسانة).
-            </p>
-          </article>
-
-          <article class="feature-card reveal">
-            <div class="feature-icon" aria-hidden="true"><i class="fas fa-zap"></i></div>
-            <h3 class="feature-title">نتائج فورية ودائمة</h3>
-            <p class="feature-text">
-              فتح الانسداد يتم في الغالب خلال 30 دقيقة إلى ساعة واحدة. والنتيجة أطول دوامًا مقارنة بالطرق التقليدية لأنها تُنظّف الأنبوب بالكامل.
-            </p>
-          </article>
-
-          <article class="feature-card reveal">
-            <div class="feature-icon" aria-hidden="true"><i class="fas fa-magnifying-glass"></i></div>
-            <h3 class="feature-title">كشف دقيق لموضع الانسداد</h3>
-            <p class="feature-text">
-              يستخدم فريقنا كاميرات تفتيش للمجاري لتحديد موضع وسبب الانسداد بدقة قبل البدء بالعمل، مما يوفر الوقت ويضمن الحل الصحيح.
-            </p>
-          </article>
-
-          <article class="feature-card reveal">
-            <div class="feature-icon" aria-hidden="true"><i class="fas fa-certificate"></i></div>
-            <h3 class="feature-title">فنيون معتمدون ومتخصصون</h3>
-            <p class="feature-text">
-              جميع فنيينا مُدرَّبون على أعلى المعايير في تشغيل معدات الكمبروسر، مع خبرة تتجاوز 10 سنوات في مجال تسليك الصرف الصحي.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================================================
-         H2-2: أسباب انسداد المجاري
-         ================================================ -->
-    <section id="causes" class="causes-bg" aria-labelledby="causes-heading">
-      <div class="container">
-        <header class="section-header">
-          <h2 id="causes-heading">أسباب انسداد المجاري</h2>
-          <p class="section-desc">
-            معرفة سبب الانسداد تساعدك على الوقاية مستقبلًا — إليك أبرز الأسباب التي يواجهها فريقنا يوميًا في الرياض
-          </p>
-        </header>
-
-        <div class="causes-grid">
-          <article class="cause-item reveal">
-            <div class="cause-num" aria-hidden="true">1</div>
-            <div class="cause-text">
-              <h3>تراكم الشحوم والزيوت</h3>
-              <p>الزيوت والشحوم من المطبخ تتصلب داخل المواسير وتضيّق مجرى المياه تدريجيًا حتى ينسد الأنبوب بالكامل.</p>
-            </div>
-          </article>
-
-          <article class="cause-item reveal">
-            <div class="cause-num" aria-hidden="true">2</div>
-            <div class="cause-text">
-              <h3>تراكم الجير والترسبات</h3>
-              <p>المياه الجوفية في الرياض غنية بالمعادن التي تترسب على جدران المواسير وتُشكّل طبقات جيرية صلبة.</p>
-            </div>
-          </article>
-
-          <article class="cause-item reveal">
-            <div class="cause-num" aria-hidden="true">3</div>
-            <div class="cause-text">
-              <h3>مناديل ومواد صلبة</h3>
-              <p>مناديل الورق والقطن وبقايا الطعام تتراكم وتُشكّل كتلًا صلبة لا يمكن إزالتها إلا بضغط الكمبروسر.</p>
-            </div>
-          </article>
-
-          <article class="cause-item reveal">
-            <div class="cause-num" aria-hidden="true">4</div>
-            <div class="cause-text">
-              <h3>جذور الأشجار</h3>
-              <p>جذور الأشجار المجاورة تتسلل إلى مواسير الصرف الصحي الخارجية وتسدّها أو تُسبّب تشققات فيها.</p>
-            </div>
-          </article>
-
-          <article class="cause-item reveal">
-            <div class="cause-num" aria-hidden="true">5</div>
-            <div class="cause-text">
-              <h3>كسور وانحناءات في المواسير</h3>
-              <p>الحركة الأرضية أو أعمال البناء المجاورة قد تُسبب كسورًا أو انحناءات تعيق تصريف المياه.</p>
-            </div>
-          </article>
-
-          <article class="cause-item reveal">
-            <div class="cause-num" aria-hidden="true">6</div>
-            <div class="cause-text">
-              <h3>سوء التصميم الأصلي</h3>
-              <p>ضعف الميل أو صغر قطر الأنابيب المُستخدمة في التصميم الأصلي يُفضي إلى انسدادات متكررة.</p>
-            </div>
-          </article>
-
-          <article class="cause-item reveal">
-            <div class="cause-num" aria-hidden="true">7</div>
-            <div class="cause-text">
-              <h3>انسداد البيارة الخارجية</h3>
-              <p>امتلاء بيارة الصرف الخارجية يؤدي إلى ارتداد المياه في أحواض وحمامات المنزل كاملًا.</p>
-            </div>
-          </article>
-
-          <article class="cause-item reveal">
-            <div class="cause-num" aria-hidden="true">8</div>
-            <div class="cause-text">
-              <h3>تقادم مواسير الصرف الصحي</h3>
-              <p>المواسير القديمة تتآكل من الداخل وتتضيق تدريجيًا مع الزمن ما يجعلها عرضة للانسداد المتكرر.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================================================
-         H2-3: خدماتنا
-         ================================================ -->
-    <section id="services" class="services-bg" aria-labelledby="services-heading">
-      <div class="container">
-        <header class="section-header">
-          <h2 id="services-heading">خدمات تسليك المجاري الشاملة</h2>
-          <p class="section-desc">
-            نقدم منظومة متكاملة من خدمات الصرف الصحي والسباكة لتغطية جميع احتياجاتك في الرياض
-          </p>
+          <h2>خدماتنا الاحترافية</h2>
+          <p class="section-desc">حلول متكاملة لمشاكل الصرف الصحي والسباكة باستخدام أحدث المعدات العالمية</p>
         </header>
 
         <div class="services-grid">
           <article class="service-card reveal">
-            <img src="assets/images/service1.jpg" alt="تسليك مجاري بالكمبروسر" style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius) var(--radius) 0 0; margin: -2rem -1.75rem 1.2rem -1.75rem;">
-            <div class="service-icon" aria-hidden="true"><i class="fas fa-wind"></i></div>
-            <h3 class="service-name">تسليك مجاري بالكمبروسر</h3>
-            <p class="service-desc">فتح انسداد مواسير الصرف الصحي داخل المنازل والمنشآت التجارية بضغط الهواء العالي.</p>
+            <img src="assets/images/service1.jpg" alt="تسليك مجاري بالكمبروسر" class="service-img">
+            <div class="service-content">
+              <div class="service-icon-box"><i class="fas fa-wind"></i></div>
+              <h3 class="service-name">تسليك مجاري بالكمبروسر</h3>
+              <p class="service-desc">استخدام ضغط الهواء العالي لفتح أصعب الانسدادات في المواسير الداخلية والخارجية.</p>
+            </div>
           </article>
 
           <article class="service-card reveal">
-            <img src="assets/images/service2.jpg" alt="تسليك بيارات الصرف الصحي" style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius) var(--radius) 0 0; margin: -2rem -1.75rem 1.2rem -1.75rem;">
-            <div class="service-icon" aria-hidden="true"><i class="fas fa-circle-notch"></i></div>
-            <h3 class="service-name">تسليك بيارات الصرف الصحي</h3>
-            <p class="service-desc">تسليك وتنظيف غرف تفتيش الصرف الصحي والبيارات الخارجية المسدودة.</p>
+            <img src="assets/images/service2.jpg" alt="تسليك بيارات" class="service-img">
+            <div class="service-content">
+              <div class="service-icon-box"><i class="fas fa-circle-notch"></i></div>
+              <h3 class="service-name">تسليك بيارات الصرف</h3>
+              <p class="service-desc">تنظيف وتسليك غرف التفتيش والبيارات الرئيسية لضمان انسياب المياه بشكل طبيعي.</p>
+            </div>
           </article>
 
           <article class="service-card reveal">
-            <img src="assets/images/service3.jpg" alt="شفط بيارات وحفر صرف صحي" style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius) var(--radius) 0 0; margin: -2rem -1.75rem 1.2rem -1.75rem;">
-            <div class="service-icon" aria-hidden="true"><i class="fas fa-truck-monster"></i></div>
-            <h3 class="service-name">شفط بيارات وحفر صرف صحي</h3>
-            <p class="service-desc">تفريغ البيارات والحفر الامتصاصية بسيارات الشفط الضخمة لمنع الفيضانات.</p>
+            <img src="assets/images/service3.jpg" alt="شفط بيارات" class="service-img">
+            <div class="service-content">
+              <div class="service-icon-box"><i class="fas fa-truck-monster"></i></div>
+              <h3 class="service-name">شفط بيارات حديثة</h3>
+              <p class="service-desc">سيارات شفط ضخمة لتفريغ البيارات ومنع ارتداد المياه داخل المنزل.</p>
+            </div>
           </article>
 
           <article class="service-card reveal">
-            <img src="assets/images/service4.jpg" alt="كشف تسربات المياه" style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius) var(--radius) 0 0; margin: -2rem -1.75rem 1.2rem -1.75rem;">
-            <div class="service-icon" aria-hidden="true"><i class="fas fa-droplet-slash"></i></div>
-            <h3 class="service-name">كشف تسربات المياه</h3>
-            <p class="service-desc">كشف تسربات المياه في الجدران والأرضيات والأسقف بالأجهزة الإلكترونية دون تكسير.</p>
+            <img src="assets/images/service4.jpg" alt="كشف تسربات" class="service-img">
+            <div class="service-content">
+              <div class="service-icon-box"><i class="fas fa-droplet-slash"></i></div>
+              <h3 class="service-name">كشف تسربات المياه</h3>
+              <p class="service-desc">أجهزة إلكترونية متطورة لتحديد مكان التسريب بدقة متناهية وبدون تكسير.</p>
+            </div>
           </article>
 
           <article class="service-card reveal">
-            <img src="assets/images/service5.jpg" alt="تنظيف خزانات المياه" style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius) var(--radius) 0 0; margin: -2rem -1.75rem 1.2rem -1.75rem;">
-            <div class="service-icon" aria-hidden="true"><i class="fas fa-tank-water"></i></div>
-            <h3 class="service-name">تنظيف خزانات المياه</h3>
-            <p class="service-desc">تنظيف وتعقيم خزانات المياه العلوية والأرضية وفق معايير صحية معتمدة.</p>
+            <img src="assets/images/service5.jpg" alt="تنظيف خزانات" class="service-img">
+            <div class="service-content">
+              <div class="service-icon-box"><i class="fas fa-tank-water"></i></div>
+              <h3 class="service-name">تنظيف وتعقيم خزانات</h3>
+              <p class="service-desc">غسيل وتعقيم خزانات المياه لضمان مياه نظيفة وصحية لعائلتك.</p>
+            </div>
           </article>
 
           <article class="service-card reveal">
-            <img src="assets/images/service6.jpg" alt="أعمال السباكة والتركيب" style="width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius) var(--radius) 0 0; margin: -2rem -1.75rem 1.2rem -1.75rem;">
-            <div class="service-icon" aria-hidden="true"><i class="fas fa-wrench"></i></div>
-            <h3 class="service-name">أعمال السباكة والتركيب</h3>
-            <p class="service-desc">تركيب وإصلاح جميع عناصر شبكات المياه والصرف الصحي في المنازل والمشاريع.</p>
+            <img src="assets/images/service6.jpg" alt="أعمال سباكة" class="service-img">
+            <div class="service-content">
+              <div class="service-icon-box"><i class="fas fa-wrench"></i></div>
+              <h3 class="service-name">تأسيس وإصلاح سباكة</h3>
+              <p class="service-desc">فريق من السباكين المهرة لتركيب وإصلاح كافة شبكات المياه والصرف.</p>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
     <!-- ================================================
-         H2-4: خطوات العمل
+         WHY CHOOSE US (Features)
          ================================================ -->
-    <section id="steps" class="steps-bg" aria-labelledby="steps-heading">
+    <section id="features">
       <div class="container">
         <header class="section-header">
-          <h2 id="steps-heading">خطوات العمل معنا</h2>
-          <p class="section-desc" style="color:rgba(255,255,255,0.8);">
-            من لحظة اتصالك بنا حتى انتهاء المشكلة — نظام عمل احترافي وشفاف في 5 خطوات
-          </p>
+          <h2>لماذا نحن الخيار الأفضل؟</h2>
+          <p class="section-desc">نجمع بين الخبرة الطويلة والتقنيات الحديثة لتقديم خدمة تفوق توقعاتكم</p>
         </header>
 
-        <div class="steps-grid">
-          <article class="step-card reveal">
-            <div class="step-num" aria-label="الخطوة الأولى">1</div>
-            <h3 class="step-title">الاتصال أو الواتساب</h3>
-            <p class="step-text">تواصل معنا على 0506482005 أو عبر واتساب وأخبرنا بالمشكلة ومكانها.</p>
-          </article>
-
-          <article class="step-card reveal">
-            <div class="step-num" aria-label="الخطوة الثانية">2</div>
-            <h3 class="step-title">التحديد والتقدير</h3>
-            <p class="step-text">نعطيك سعرًا تقريريًا فوريًا، ونحدد موعدًا للوصول خلال 30-60 دقيقة.</p>
-          </article>
-
-          <article class="step-card reveal">
-            <div class="step-num" aria-label="الخطوة الثالثة">3</div>
-            <h3 class="step-title">الفحص والتشخيص</h3>
-            <p class="step-text">يفحص الفني موضع الانسداد بكاميرا المجاري لتحديد السبب الجذري بدقة.</p>
-          </article>
-
-          <article class="step-card reveal">
-            <div class="step-num" aria-label="الخطوة الرابعة">4</div>
-            <h3 class="step-title">التسليك بالكمبروسر</h3>
-            <p class="step-text">يبدأ التسليك بجهاز الكمبروسر عالي الضغط — الانسداد يُزال نهائيًا بدون تكسير.</p>
-          </article>
-
-          <article class="step-card reveal">
-            <div class="step-num" aria-label="الخطوة الخامسة">5</div>
-            <h3 class="step-title">الاختبار والضمان</h3>
-            <p class="step-text">نختبر تصريف المياه أمامك ونسلّمك ضمانًا كتابيًا لمدة 30 يومًا.</p>
-          </article>
+        <div class="grid-3">
+          <div class="feature-card reveal">
+            <div class="feature-icon"><i class="fas fa-ban"></i></div>
+            <h3 class="feature-title">بدون تكسير نهائياً</h3>
+            <p class="feature-text">نحافظ على سلامة ديكورات منزلك وأرضياته باستخدام تقنيات الضغط الحديثة.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon"><i class="fas fa-gauge-high"></i></div>
+            <h3 class="feature-title">أقوى أجهزة الكمبروسر</h3>
+            <p class="feature-text">نمتلك معدات ألمانية تولد ضغطاً كافياً لتفتيت أصعب الدهون والترسبات.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon"><i class="fas fa-certificate"></i></div>
+            <h3 class="feature-title">ضمان معتمد</h3>
+            <p class="feature-text">نقدم ضماناً كتابياً على جودة العمل، ونعود مجاناً في حال تكرار المشكلة.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ================================================
-         H2-5: لماذا تختار خدماتنا؟
-         ================================================ -->
-    <section id="why" aria-labelledby="why-heading">
+    <!-- Steps -->
+    <section id="steps" class="steps-bg">
       <div class="container">
-        <div class="why-grid">
-
-          <!-- Right: Why list -->
-          <div>
-            <header style="margin-bottom:2rem;">
-              <h2 id="why-heading" style="text-align:right;">لماذا تختار خدماتنا؟</h2>
-            </header>
-            <ul class="why-list" role="list">
-              <li class="why-item reveal">
-                <i class="fas fa-medal why-icon" aria-hidden="true"></i>
-                <div class="why-content">
-                  <h3>خبرة تتجاوز 10 سنوات</h3>
-                  <p>فريقنا يمتلك خبرة عقد كامل في تسليك المجاري بالكمبروسر في الرياض والمنطقة.</p>
-                </div>
-              </li>
-              <li class="why-item reveal">
-                <i class="fas fa-tools why-icon" aria-hidden="true"></i>
-                <div class="why-content">
-                  <h3>أحدث معدات الكمبروسر</h3>
-                  <p>نستخدم أجهزة كمبروسر ألمانية عالية الضغط مع كاميرات فحص المجاري بتقنية HD.</p>
-                </div>
-              </li>
-              <li class="why-item reveal">
-                <i class="fas fa-wallet why-icon" aria-hidden="true"></i>
-                <div class="why-content">
-                  <h3>أسعار تنافسية وشفافة</h3>
-                  <p>لا رسوم خفية — تعرف السعر قبل البدء بالعمل. نقدم عروض أسعار مجانية فورية.</p>
-                </div>
-              </li>
-              <li class="why-item reveal">
-                <i class="fas fa-headset why-icon" aria-hidden="true"></i>
-                <div class="why-content">
-                  <h3>دعم فني مستمر</h3>
-                  <p>فريق خدمة العملاء متاح 24/7 للرد على استفساراتك ومتابعة طلباتك.</p>
-                </div>
-              </li>
-              <li class="why-item reveal">
-                <i class="fas fa-id-card why-icon" aria-hidden="true"></i>
-                <div class="why-content">
-                  <h3>فنيون مرخصون ومؤمَّنون</h3>
-                  <p>جميع فنيينا حاملو تصاريح عمل سارية ومؤمَّن عليهم — راحة بالك مضمونة.</p>
-                </div>
-              </li>
-            </ul>
+        <header class="section-header">
+          <h2>كيف نعمل؟</h2>
+          <p class="section-desc">خطوات بسيطة وواضحة تضمن لك راحة البال</p>
+        </header>
+        <div class="steps-grid">
+          <div class="step-card reveal">
+            <div class="step-num">1</div>
+            <h3 class="step-title">اتصالك بنا</h3>
+            <p class="step-text">تواصل معنا واشرح المشكلة لنحدد لك التكلفة المبدئية.</p>
           </div>
-
-          <!-- Left: Stats -->
-          <div>
-            <div class="why-stats">
-              <div class="stat-card reveal">
-                <div class="stat-num">+320</div>
-                <div class="stat-label">عميل راضٍ في الرياض</div>
-              </div>
-              <div class="stat-card reveal">
-                <div class="stat-num">4.9⭐</div>
-                <div class="stat-label">متوسط تقييم الخدمة</div>
-              </div>
-              <div class="stat-card reveal">
-                <div class="stat-num">30د</div>
-                <div class="stat-label">متوسط وقت الوصول</div>
-              </div>
-              <div class="stat-card reveal">
-                <div class="stat-num">24/7</div>
-                <div class="stat-label">خدمة طوارئ متواصلة</div>
-              </div>
-              <div class="stat-card reveal" style="grid-column: 1/-1;">
-                <div class="stat-num">10+</div>
-                <div class="stat-label">سنوات خبرة في تسليك المجاري بالكمبروسر</div>
-              </div>
-            </div>
+          <div class="step-card reveal">
+            <div class="step-num">2</div>
+            <h3 class="step-title">وصول الفني</h3>
+            <p class="step-text">يصلك فريقنا خلال 30 دقيقة مجهزاً بكافة المعدات.</p>
           </div>
-
+          <div class="step-card reveal">
+            <div class="step-num">3</div>
+            <h3 class="step-title">الفحص والحل</h3>
+            <p class="step-text">يتم فحص الانسداد واستخدام الكمبروسر لحله فوراً.</p>
+          </div>
+          <div class="step-card reveal">
+            <div class="step-num">4</div>
+            <h3 class="step-title">التسليم والضمان</h3>
+            <p class="step-text">نتأكد من انسياب المياه ونسلمك شهادة الضمان.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -1501,180 +1063,80 @@
     <!-- ================================================
          REVIEWS SECTION
          ================================================ -->
-    <section id="reviews" style="background: var(--light-gray);" aria-labelledby="reviews-heading">
+    <section id="reviews">
       <div class="container">
         <header class="section-header">
-          <h2 id="reviews-heading">آراء عملائنا</h2>
-          <p class="section-desc">أكثر من 320 عميل راضٍ في الرياض — اقرأ ما يقولونه عن خدمة تسليك المجاري بالكمبروسر</p>
+          <h2>آراء عملائنا في الرياض</h2>
+          <p class="section-desc">ثقة عملائنا هي سر نجاحنا المستمر لأكثر من 10 سنوات</p>
         </header>
 
         <div class="reviews-grid">
-          <article class="review-card reveal" itemscope itemtype="https://schema.org/Review">
-            <div class="stars" aria-label="تقييم 5 نجوم">★★★★★</div>
-            <p class="review-text" itemprop="reviewBody">
-              "خدمة ممتازة جدًا، الفني وصل خلال أقل من ساعة وحل مشكلة انسداد المجاري في المطبخ بأقل من 40 دقيقة بدون أي تكسير. سعر معقول وضمان حقيقي. أنصح الجميع."
-            </p>
-            <div class="reviewer" itemprop="author">
-              خالد منصور
-              <span>— الرياض، حي الملقا</span>
-            </div>
+          <article class="review-card reveal">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"خدمة ممتازة وسريعة جداً. الفني كان محترم وشغلهم نظيف جداً وبدون أي تكسير في الحمام. أنصح بهم بشدة."</p>
+            <div class="reviewer">خالد منصور <span>الرياض، حي الملقا</span></div>
           </article>
-
-          <article class="review-card reveal" itemscope itemtype="https://schema.org/Review">
-            <div class="stars" aria-label="تقييم 5 نجوم">★★★★★</div>
-            <p class="review-text" itemprop="reviewBody">
-              "اتصلت الساعة 2 الليل بسبب ارتداد المجاري وكان الوضع صعب جدًا. الفريق وصل بسرعة وعالجوا الموضوع بشكل احترافي وبدون فوضى. شكرًا المثالية."
-            </p>
-            <div class="reviewer" itemprop="author">
-              سارة الأحمد
-              <span>— الرياض، حي العليا</span>
-            </div>
+          <article class="review-card reveal">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"جربت شركات كثيرة لكن المثالية هم الأفضل. حلوا مشكلة انسداد المطبخ اللي كانت متعبة جداً في وقت قياسي."</p>
+            <div class="reviewer">سارة الأحمد <span>الرياض، حي العليا</span></div>
           </article>
-
-          <article class="review-card reveal" itemscope itemtype="https://schema.org/Review">
-            <div class="stars" aria-label="تقييم 5 نجوم">★★★★★</div>
-            <p class="review-text" itemprop="reviewBody">
-              "كان عندي انسداد في البيارة الخارجية وحاولت مع شركات كثيرة بدون فائدة. المثالية جاءت بجهاز الكمبروسر وحلوها من أول مرة. الضمان أيضًا مضمون فعلًا."
-            </p>
-            <div class="reviewer" itemprop="author">
-              أحمد العتيبي
-              <span>— الرياض، حي الشفا</span>
-            </div>
+          <article class="review-card reveal">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"فريق احترافي ومعداتهم حديثة جداً. السعر كان واضح من البداية وما كان فيه أي زيادة. شكراً لكم."</p>
+            <div class="reviewer">أحمد العتيبي <span>الرياض، حي الشفا</span></div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ================================================
-         H2-6: FAQ Section
-         ================================================ -->
-    <section id="faq" aria-labelledby="faq-heading">
+    <!-- FAQ -->
+    <section id="faq" class="services-bg">
       <div class="container">
         <header class="section-header">
-          <h2 id="faq-heading">الأسئلة الشائعة</h2>
-          <p class="section-desc">إجابات على أكثر الأسئلة شيوعًا حول خدمة تسليك المجاري بالكمبروسر</p>
+          <h2>الأسئلة الشائعة</h2>
+          <p class="section-desc">كل ما تريد معرفته عن خدمة تسليك المجاري بالكمبروسر</p>
         </header>
-
-        <div class="faq-list" role="list">
-
-          <div class="faq-item reveal" role="listitem">
-            <button class="faq-q"
-                    aria-expanded="false"
-                    aria-controls="faq-a-1"
-                    onclick="toggleFaq(this)">
-              <span>ما هي خدمة تسليك المجاري بالكمبروسر؟</span>
-              <i class="fas fa-chevron-down faq-chevron" aria-hidden="true"></i>
+        <div class="faq-list">
+          <div class="faq-item reveal">
+            <button class="faq-q" aria-expanded="false">
+              ما هو تسليك المجاري بالكمبروسر؟
+              <i class="fas fa-chevron-down faq-chevron"></i>
             </button>
-            <div id="faq-a-1" class="faq-a" role="region">
-              تسليك المجاري بالكمبروسر هي تقنية حديثة لفتح انسداد مواسير الصرف الصحي باستخدام ضغط هواء عالٍ أو ضغط مياه مُدارة. تُزيل الانسدادات الشديدة بدون تكسير الجدران أو الأرضيات، مما يوفر الوقت والمال ويُنجز العمل بشكل نظيف واحترافي.
+            <div class="faq-a">
+              هو استخدام ضغط هواء عالي جداً لتفتيت الدهون والترسبات الصلبة داخل المواسير وفتح الانسداد دون الحاجة للحفر أو التكسير.
             </div>
           </div>
-
-          <div class="faq-item reveal" role="listitem">
-            <button class="faq-q"
-                    aria-expanded="false"
-                    aria-controls="faq-a-2"
-                    onclick="toggleFaq(this)">
-              <span>هل تسليك المجاري بالكمبروسر آمن على المواسير؟</span>
-              <i class="fas fa-chevron-down faq-chevron" aria-hidden="true"></i>
+          <div class="faq-item reveal">
+            <button class="faq-q" aria-expanded="false">
+              هل الخدمة متوفرة في كل أحياء الرياض؟
+              <i class="fas fa-chevron-down faq-chevron"></i>
             </button>
-            <div id="faq-a-2" class="faq-a" role="region">
-              نعم، آمن تمامًا عند تطبيقه من قِبَل فني متخصص. فريقنا يضبط ضغط الهواء بعناية حسب نوع الأنبوب وحجم الانسداد. يعمل الكمبروسر بكفاءة على مواسير PVC والحديد والخرسانة دون إتلافها.
+            <div class="faq-a">
+              نعم، نغطي كافة أحياء الرياض (شمال، جنوب، شرق، غرب) ونصلك في وقت قياسي لا يتعدى 30-60 دقيقة.
             </div>
           </div>
-
-          <div class="faq-item reveal" role="listitem">
-            <button class="faq-q"
-                    aria-expanded="false"
-                    aria-controls="faq-a-3"
-                    onclick="toggleFaq(this)">
-              <span>كم تستغرق عملية تسليك المجاري بالكمبروسر؟</span>
-              <i class="fas fa-chevron-down faq-chevron" aria-hidden="true"></i>
+          <div class="faq-item reveal">
+            <button class="faq-q" aria-expanded="false">
+              كم مدة الضمان على الخدمة؟
+              <i class="fas fa-chevron-down faq-chevron"></i>
             </button>
-            <div id="faq-a-3" class="faq-a" role="region">
-              في الغالب بين 30 دقيقة وساعتين حسب حجم الانسداد وموضعه. الانسدادات البسيطة في المغسلة أو المرحاض تُحَل خلال 30 دقيقة، أما الانسدادات في الخطوط الرئيسية أو البيارات فقد تحتاج وقتًا أطول.
+            <div class="faq-a">
+              نقدم ضماناً لمدة 30 يوماً على كافة أعمال التسليك، وفي حال عودة المشكلة نأتي للإصلاح مجاناً.
             </div>
           </div>
-
-          <div class="faq-item reveal" role="listitem">
-            <button class="faq-q"
-                    aria-expanded="false"
-                    aria-controls="faq-a-4"
-                    onclick="toggleFaq(this)">
-              <span>هل تتوفر خدمة تسليك المجاري على مدار الساعة؟</span>
-              <i class="fas fa-chevron-down faq-chevron" aria-hidden="true"></i>
-            </button>
-            <div id="faq-a-4" class="faq-a" role="region">
-              نعم، نوفر خدمة طوارئ تسليك المجاري 24 ساعة يوميًا / 7 أيام في الأسبوع، بما فيها الجمعة وجميع العطل الرسمية في المملكة العربية السعودية. نصل إليك في الرياض خلال 30 إلى 60 دقيقة فقط.
-            </div>
-          </div>
-
-          <div class="faq-item reveal" role="listitem">
-            <button class="faq-q"
-                    aria-expanded="false"
-                    aria-controls="faq-a-5"
-                    onclick="toggleFaq(this)">
-              <span>ما تكلفة تسليك المجاري بالكمبروسر في الرياض؟</span>
-              <i class="fas fa-chevron-down faq-chevron" aria-hidden="true"></i>
-            </button>
-            <div id="faq-a-5" class="faq-a" role="region">
-              تختلف الأسعار حسب نوع الانسداد وموضعه وحجم العمل المطلوب. نقدم تسعيرة واضحة وشفافة قبل البدء بأي عمل — لا رسوم مخفية. اتصل بنا الآن على 0506482005 للحصول على سعر مجاني وفوري.
-            </div>
-          </div>
-
-          <div class="faq-item reveal" role="listitem">
-            <button class="faq-q"
-                    aria-expanded="false"
-                    aria-controls="faq-a-6"
-                    onclick="toggleFaq(this)">
-              <span>ما الفرق بين الكمبروسر وطرق تسليك المجاري الأخرى؟</span>
-              <i class="fas fa-chevron-down faq-chevron" aria-hidden="true"></i>
-            </button>
-            <div id="faq-a-6" class="faq-a" role="region">
-              الكمبروسر يستخدم ضغطًا عاليًا يصل إلى 350 بار لتفتيت الانسداد وطرده نهائيًا، بينما السنارة اليدوية لا تنجح في الانسدادات الشديدة، والكيماويات قد تُتلف المواسير وتضر بالبيئة. الكمبروسر أسرع وأكثر فاعلية وأطول دوامًا.
-            </div>
-          </div>
-
-          <div class="faq-item reveal" role="listitem">
-            <button class="faq-q"
-                    aria-expanded="false"
-                    aria-controls="faq-a-7"
-                    onclick="toggleFaq(this)">
-              <span>هل تقدمون ضمانًا على خدمة تسليك المجاري؟</span>
-              <i class="fas fa-chevron-down faq-chevron" aria-hidden="true"></i>
-            </button>
-            <div id="faq-a-7" class="faq-a" role="region">
-              نعم، نقدم ضمانًا لمدة 30 يومًا على جميع أعمال تسليك المجاري بالكمبروسر. إذا عاد الانسداد نفسه خلال فترة الضمان نعود فورًا ونحل المشكلة مجانًا دون أي تكاليف إضافية.
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ================================================
-         CTA SECTION
-         ================================================ -->
-    <section id="contact" class="cta-section" aria-labelledby="cta-heading">
+    <!-- Contact CTA -->
+    <section id="contact" style="background: var(--accent); color: var(--primary); text-align: center; padding: 5rem 0;">
       <div class="container">
-        <h2 id="cta-heading">انسداد المجاري؟ اتصل الآن!</h2>
-        <p>
-          لا تتحمل إزعاج انسداد الصرف الصحي لحظة أطول — فريقنا جاهز على مدار الساعة لحل المشكلة بسرعة وضمان رضاك الكامل.
-        </p>
-        <div class="cta-btns">
-          <button onclick="return gtagCall('tel:+966506482005')"
-                  class="btn-call-cta"
-                  aria-label="اتصل الآن لتسليك المجاري بالكمبروسر 0506482005">
-            <i class="fas fa-phone-volume" aria-hidden="true"></i>
-            اتصل الآن — 0506482005
-          </button>
-          <a href="https://wa.me/966506482005?text=السلام%20عليكم،%20أريد%20الاستفسار%20عن%20خدمة%20تسليك%20المجاري%20بالكمبروسر%20في%20الرياض"
-             target="_blank" rel="noopener"
-             onclick="return gtagWa('https://wa.me/966506482005')"
-             class="btn-wa-cta"
-             aria-label="تواصل عبر واتساب لتسليك المجاري">
-            <i class="fab fa-whatsapp" aria-hidden="true"></i>
-            تواصل عبر واتساب
+        <h2 style="color: var(--primary); border: none;">هل تعاني من انسداد المجاري؟</h2>
+        <p style="font-size: 1.2rem; margin: 1.5rem 0 2.5rem; font-weight: 700;">لا تتردد في الاتصال بنا، نحن متاحون لخدمتك الآن</p>
+        <div class="hero-ctas" style="justify-content: center;">
+          <a href="tel:+966506482005" class="btn-primary" style="background: var(--primary); color: #fff;">
+            <i class="fas fa-phone-volume"></i> اتصل الآن: 0506482005
           </a>
         </div>
       </div>
@@ -1682,189 +1144,58 @@
 
   </main>
 
-  <!-- ======================================================
-       FOOTER
-       ====================================================== -->
-  <footer role="contentinfo">
+  <footer>
     <div class="container">
       <div class="footer-grid">
-
-        <div class="footer-brand">
-          <div class="logo">المثالية <span style="color:var(--accent)">للصرف الصحي</span></div>
-          <p>
-            شركة متخصصة في تسليك المجاري بالكمبروسر وخدمات الصرف الصحي في الرياض والمملكة العربية السعودية. نقدم خدمة طوارئ 24/7 بضمان 30 يومًا.
-          </p>
+        <div>
+          <div class="footer-title">المثالية للصرف الصحي</div>
+          <p>شركة رائدة في مجال خدمات الصرف الصحي والسباكة في الرياض، نعتمد على أحدث التقنيات العالمية لضمان أفضل خدمة لعملائنا.</p>
         </div>
-
-        <nav aria-label="روابط سريعة">
+        <div>
           <div class="footer-title">روابط سريعة</div>
           <ul class="footer-links">
             <li><a href="#home">الرئيسية</a></li>
-            <li><a href="#features">مميزات الكمبروسر</a></li>
             <li><a href="#services">خدماتنا</a></li>
-            <li><a href="#steps">خطوات العمل</a></li>
-            <li><a href="#why">لماذا نحن؟</a></li>
+            <li><a href="#features">المميزات</a></li>
             <li><a href="#faq">الأسئلة الشائعة</a></li>
           </ul>
-        </nav>
-
+        </div>
         <div>
           <div class="footer-title">تواصل معنا</div>
-          <div class="footer-contact-item">
-            <i class="fas fa-phone" aria-hidden="true"></i>
-            <a href="tel:+966506482005" onclick="return gtagCall('tel:+966506482005')">0506482005</a>
-          </div>
-          <div class="footer-contact-item">
-            <i class="fab fa-whatsapp" aria-hidden="true"></i>
-            <a href="https://wa.me/966506482005" target="_blank" rel="noopener" onclick="return gtagWa('https://wa.me/966506482005')">واتساب مباشر</a>
-          </div>
-          <div class="footer-contact-item">
-            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-            <span>الرياض، المملكة العربية السعودية</span>
-          </div>
-          <div class="footer-contact-item">
-            <i class="fas fa-clock" aria-hidden="true"></i>
-            <span>خدمة 24 ساعة / 7 أيام</span>
-          </div>
+          <div class="footer-contact-item"><i class="fas fa-phone"></i> 0506482005</div>
+          <div class="footer-contact-item"><i class="fab fa-whatsapp"></i> 966506482005</div>
+          <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</div>
         </div>
-
-        <div>
-          <div class="footer-title">منطقة الخدمة</div>
-          <ul class="footer-links">
-            <li><span style="color:rgba(255,255,255,0.7)">تسليك مجاري الرياض</span></li>
-            <li><span style="color:rgba(255,255,255,0.7)">تسليك مجاري المملكة العربية السعودية</span></li>
-            <li><span style="color:rgba(255,255,255,0.7)">فتح انسداد مجاري الرياض</span></li>
-            <li><span style="color:rgba(255,255,255,0.7)">تسليك بيارات الرياض</span></li>
-            <li><span style="color:rgba(255,255,255,0.7)">شفط بيارات الرياض</span></li>
-          </ul>
-        </div>
-
       </div>
-
       <div class="footer-bottom">
-        <p>© 2025 المثالية للصرف الصحي والسباكة — الرياض، المملكة العربية السعودية</p>
-        <p style="margin-top:0.4rem;">رقم الهاتف: <a href="tel:+966506482005" style="color:var(--accent)">0506482005</a> | خدمة تسليك مجاري بالكمبروسر 24/7</p>
+        &copy; 2026 المثالية للصرف الصحي - جميع الحقوق محفوظة
       </div>
     </div>
   </footer>
 
-  <!-- ======================================================
-       JAVASCRIPT
-       ====================================================== -->
   <script>
-    /* ---- Google Ads Conversion Tracking ---- */
-    function gtagCall(url) {
-      gtag('event', 'conversion', { 'send_to': 'AW-18152084922/PK4TCK67t8EcELqry89D', 'value': 1.0, 'currency': 'SAR' });
-      gtag('event', 'conversion', { 'send_to': 'AW-18152084922/59b3COqYhr4cELqry89D', 'value': 1.0, 'currency': 'SAR' });
-      gtag('event', 'conversion', { 'send_to': 'AW-18009279735', 'value': 1.0, 'currency': 'SAR' });
-      setTimeout(function(){ window.location = url; }, 300);
-      return false;
-    }
-
-    function gtagWa(url) {
-      gtag('event', 'conversion', { 'send_to': 'AW-18152084922/akhDCKW7t8EcELqry89D', 'value': 1.0, 'currency': 'SAR' });
-      gtag('event', 'conversion', { 'send_to': 'AW-18152084922/c_hgCOiy670cELqry89D', 'value': 1.0, 'currency': 'SAR' });
-      gtag('event', 'conversion', { 'send_to': 'AW-18009279735', 'value': 1.0, 'currency': 'SAR' });
-      setTimeout(function(){ window.open(url, '_blank'); }, 300);
-      return false;
-    }
-
-    /* ---- FAQ Toggle ---- */
-    function toggleFaq(btn) {
-      var isOpen = btn.getAttribute('aria-expanded') === 'true';
-      // Close all
-      document.querySelectorAll('.faq-q').forEach(function(b) {
-        b.setAttribute('aria-expanded', 'false');
-        var id = b.getAttribute('aria-controls');
-        if (id) document.getElementById(id).classList.remove('open');
-      });
-      // Open clicked if was closed
-      if (!isOpen) {
-        btn.setAttribute('aria-expanded', 'true');
-        var targetId = btn.getAttribute('aria-controls');
-        if (targetId) document.getElementById(targetId).classList.add('open');
-      }
-    }
-
-    /* ---- Scroll Reveal ---- */
-    (function() {
-      var reveals = document.querySelectorAll('.reveal');
-      if (!('IntersectionObserver' in window)) {
-        reveals.forEach(function(el){ el.classList.add('visible'); });
-        return;
-      }
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-      reveals.forEach(function(el){ observer.observe(el); });
-    })();
-
-    /* ---- Smooth scroll for anchor links ---- */
-    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-      anchor.addEventListener('click', function(e) {
-        var target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+    // FAQ Toggle
+    document.querySelectorAll('.faq-q').forEach(button => {
+      button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', !expanded);
+        const answer = button.nextElementSibling;
+        answer.classList.toggle('open');
       });
     });
 
-    /* ---- Track scroll depth for Google Ads (engagement signal) ---- */
-    var scrollMarks = { 25: false, 50: false, 75: false, 90: false };
-    window.addEventListener('scroll', function() {
-      var scrollPct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-      Object.keys(scrollMarks).forEach(function(mark) {
-        if (!scrollMarks[mark] && scrollPct >= parseInt(mark)) {
-          scrollMarks[mark] = true;
-          gtag('event', 'scroll_depth', { 'percent_scrolled': mark, 'page_title': document.title });
+    // Reveal on Scroll
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
       });
-    }, { passive: true });
+    }, observerOptions);
 
-    /* ---- Font Awesome fallback ---- */
-    window.addEventListener('load', function() {
-      var test = document.createElement('i');
-      test.className = 'fas fa-check';
-      test.style.cssText = 'position:absolute;left:-9999px';
-      document.body.appendChild(test);
-      if (window.getComputedStyle(test, ':before').content === 'none') {
-        var link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css';
-        document.head.appendChild(link);
-      }
-      document.body.removeChild(test);
-    });
-
-    /* ---- Mobile: hide sticky bar when floating buttons overlap ---- */
-    var stickyBar = document.querySelector('.sticky-bar');
-    window.addEventListener('scroll', function() {
-      if (window.scrollY < 100) {
-        stickyBar && (stickyBar.style.display = 'none');
-      } else {
-        stickyBar && (stickyBar.style.display = 'flex');
-      }
-    }, { passive: true });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
-
-  <style>
-    /* Utility: hide text on small screens for header buttons */
-    @media(max-width:500px){
-      .hidden-sm { display: none; }
-    }
-    /* Add bottom padding on mobile to not overlap sticky bar */
-    @media(max-width:767px){
-      body { padding-bottom: 58px; }
-      .floating-wa { bottom: 80px; left: 16px; width: 52px; height: 52px; font-size: 1.6rem; }
-      .floating-call { bottom: 148px; left: 16px; width: 52px; height: 52px; font-size: 1.4rem; }
-    }
-  </style>
 
 </body>
 </html>
