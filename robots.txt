@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://sabak-ksa.vercel.app/sitemap.xml
+
+# Block common crawl waste
+Disallow: /cdn-cgi/
+Disallow: /*.json$
+
+# Crawl-delay for bots (optional, Googlebot ignores)
+# Crawl-delay: 1
