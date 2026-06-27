@@ -42,25 +42,28 @@
   </script>
 
   <!-- Google Ads Tracking -->
+  <!-- 1. Load the Global Site Tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18242160555"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     
-    // Config with enhanced debugging and beacon
+    // 2. Explicitly enable Conversion Linker to handle cross-ad/cross-account transitions
+    // This ensures GCLID is correctly captured and stored in first-party cookies
     gtag('config', 'AW-18242160555', {
-      'transport_type': 'beacon',
-      'debug_mode': true
+      'conversion_linker': true,
+      'transport_type': 'beacon'
     });
 
-    // The most reliable conversion tracking function for Google Ads
+    // 3. Optimized conversion reporting function
     function gtag_report_conversion(url) {
       var callback = function () {
         if (typeof(url) != 'undefined') {
           window.location = url;
         }
       };
+      // Send conversion event with explicit transport to bypass any browser redirects
       gtag('event', 'conversion', {
           'send_to': 'AW-18242160555/cXoLCJ0HsMYcEKuPxfpD',
           'event_callback': callback,
