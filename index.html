@@ -63,12 +63,30 @@
           window.location = url;
         }
       };
-      // Send conversion event with explicit transport to bypass any browser redirects
-      gtag('event', 'conversion', {
-          'send_to': 'AW-18242160555/cXoLCJOHsMYcEKuPxfpD',
-          'event_callback': callback,
+      
+      // Send all requested conversion events
+      const labels = [
+        'cXoLCJOHsMYcEKuPxfpD', // جهة اتصال
+        'xJQmCJmHsMYcEKuPxfpD', // انقر للاتصال
+        'PkUzCJ-HsMYcEKuPxfpD'  // انقر للاتصال (1)
+      ];
+
+      labels.forEach((label, index) => {
+        const isLast = index === labels.length - 1;
+        gtag('event', 'conversion', {
+          'send_to': `AW-18242160555/${label}`,
+          'event_callback': isLast ? callback : undefined,
           'transport_type': 'beacon'
+        });
       });
+
+      // If for some reason the loop doesn't trigger the callback, fallback
+      setTimeout(() => {
+        if (typeof(url) != 'undefined' && window.location.href !== url) {
+          window.location = url;
+        }
+      }, 1000);
+
       return false;
     }
   </script>
