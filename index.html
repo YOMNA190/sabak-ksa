@@ -42,53 +42,48 @@
   </script>
 
   <!-- Google Ads Tracking -->
-  <!-- 1. Load the Global Site Tag -->
+  <!-- Google tag (gtag.js) - Google Ads: AW-18242160555 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18242160555"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    
-    // 2. Explicitly enable Conversion Linker to handle cross-ad/cross-account transitions
-    // This ensures GCLID is correctly captured and stored in first-party cookies
-    gtag('config', 'AW-18242160555', {
-      'conversion_linker': true,
-      'transport_type': 'beacon'
-    });
+    gtag('config', 'AW-18242160555');
+  </script>
 
-    // 3. Conversion tracking - split by action type instead of firing all labels on every click
-    // "انقر للاتصال" labels fire ONLY on phone (tel:) clicks
-    // "جهة اتصال" labels fire ONLY on WhatsApp / general contact clicks
-    function fireConversions(labels, url) {
+  <!-- Event snippet for conversion: جهة اتصال (f026CJ-X7s0cEKuPxfpD) -->
+  <!-- Event snippet for conversion: انقر للاتصال (xJQmCJmHsMYcEKuPxfpD) -->
+  <script>
+    function gtag_report_conversion_call(url) {
       var callback = function () {
         if (typeof(url) != 'undefined') {
           window.location = url;
         }
       };
-      labels.forEach((label, index) => {
-        const isLast = index === labels.length - 1;
-        gtag('event', 'conversion', {
-          'send_to': `AW-18242160555/${label}`,
-          'event_callback': isLast ? callback : undefined,
-          'transport_type': 'beacon'
-        });
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18242160555/xJQmCJmHsMYcEKuPxfpD',
+        'value': 1.0,
+        'currency': 'SAR',
+        'event_callback': callback
       });
-      setTimeout(() => {
-        if (typeof(url) != 'undefined' && window.location.href !== url) {
-          window.location = url;
-        }
-      }, 1000);
+      setTimeout(callback, 2000);
       return false;
     }
 
-    // Phone call clicks (tel: links)
-    function gtag_report_conversion_call(url) {
-      return fireConversions(['xJQmCJmHsMYcEKuPxfpD', 'PkUzCJ-HsMYcEKuPxfpD'], url); // انقر للاتصال + انقر للاتصال (1)
-    }
-
-    // WhatsApp / general contact clicks
     function gtag_report_conversion_contact(url) {
-      return fireConversions(['cXoLCJOHsMYcEKuPxfpD', 'f026CJ-X7s0cEKuPxfpD'], url); // جهة اتصال + جهة اتصال (1)
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18242160555/f026CJ-X7s0cEKuPxfpD',
+        'value': 1.0,
+        'currency': 'SAR',
+        'event_callback': callback
+      });
+      setTimeout(callback, 2000);
+      return false;
     }
   </script>
 
